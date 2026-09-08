@@ -6,7 +6,8 @@ module.exports = {
   // How many of the most recent files to keep. On every successful upload,
   // anything beyond this count (oldest first) is deleted automatically.
   MAX_FILES: parseInt(process.env.MAX_FILES || '30', 10),
-  // Hard cap enforced before we even start streaming to Blob storage.
-  // Vercel's own request body limit (varies by plan) is enforced regardless.
-  MAX_UPLOAD_BYTES: 50 * 1024 * 1024, // 50 MB
+  // Per-file size cap. Uploads go browser -> Blob storage directly (not
+  // through this serverless function), so this is just a policy limit, not
+  // a workaround for Vercel's ~4.5MB serverless request body cap.
+  MAX_UPLOAD_BYTES: parseInt(process.env.MAX_UPLOAD_MB || '200', 10) * 1024 * 1024,
 };

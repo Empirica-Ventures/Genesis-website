@@ -1,76 +1,63 @@
-// POST /api/upload — streams the request body straight into Vercel Blob
-// storage. Requires a valid session cookie (see /api/login).
+// POST /api/upload — token endpoint for client (browser -> Blob) uploads.
 //
-// The client sends the raw file as the request body (not multipart form
-// data) and tells us the original filename via the X-Filename header. See
-// js/team-uploads.js for the matching client code.
+// The file itself never passes through this serverless function; the
+// browser uploads straight to Vercel Blob storage using a short-lived token
+// minted here. This matters on Hobby: Vercel's serverless functions cap
+// request bodies at roughly 4.5MB, which would break real-world uploads
+// (team PDFs regularly run 10-70MB). The @vercel/blob "client upload"
+// pattern exists specifically to route around that cap. See
+// js/team-uploads.js and js/vendor/vercel-blob-client.js for the browser
+// side of this handshake.
+//
+// This same endpoint is called twice, for two different, distinguishable
+// requests:
+//   1. By the logged-in browser, to request a token (checked against our
+//      session cookie in onBeforeGenerateToken below).
+//   2. By Vercel's Blob service itself, after the upload completes, to
+//      run onUploadCompleted. This request has no session cookie — it's
+//      authenticated separately by @vercel/blob via a signed header, which
+//      handleUpload() verifies internally before invoking our callback.
 'use strict';
 
-const crypto = require('crypto');
-const { put, list, del } = require('@vercel/blob');
+const { handleUpload } = require('@vercel/blob/client');
+const { list, del } = require('@vercel/blob');
 const { isAuthenticated } = require('./_auth');
 const { PREFIX, MAX_FILES, MAX_UPLOAD_BYTES } = require('./_config');
 
-// We stream the incoming request straight into Blob storage rather than
-// buffering it ourselves, so turn off Vercel's automatic body parsing.
-module.exports = handler;
-module.exports.config = { api: { bodyParser: false } };
-
-async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!isAuthenticated(req)) {
-    return res.status(401).json({ error: 'Not authenticated' });
-  }
-
-  const rawName = req.headers['x-filename'];
-  if (!rawName) {
-    return res.status(400).json({ error: 'Missing X-Filename header' });
-  }
-
-  let filename;
   try {
-    filename = decodeURIComponent(String(rawName));
-  } catch {
-    return res.status(400).json({ error: 'Invalid filename encoding' });
-  }
-  filename = filename.replace(/[\\/]/g, '_').trim().slice(0, 200);
-  if (!filename) {
-    return res.status(400).json({ error: 'Invalid filename' });
-  }
-
-  const contentLength = parseInt(req.headers['content-length'] || '0', 10);
-  if (contentLength > MAX_UPLOAD_BYTES) {
-    return res.status(413).json({
-      error: `File too large. Max ${(MAX_UPLOAD_BYTES / 1024 / 1024).toFixed(0)}MB per file.`,
-    });
-  }
-
-  const uniquePrefix = `${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
-  const pathname = `${PREFIX}${uniquePrefix}-${filename}`;
-
-  try {
-    const blob = await put(pathname, req, {
-      access: 'public',
-      addRandomSuffix: false,
-      contentType: req.headers['content-type'] || 'application/octet-stream',
+    const result = await handleUpload({
+      request: req,
+      body: req.body,
+      onBeforeGenerateToken: async (pathname) => {
+        if (!isAuthenticated(req)) {
+          throw new Error('Not authenticated');
+        }
+        if (!pathname.startsWith(PREFIX) || pathname.includes('..')) {
+          throw new Error('Invalid destination path');
+        }
+        return {
+          addRandomSuffix: false,
+          maximumSizeInBytes: MAX_UPLOAD_BYTES,
+        };
+      },
+      onUploadCompleted: async () => {
+        await enforceRetention();
+      },
     });
 
-    await enforceRetention();
-
-    return res.status(200).json({
-      ok: true,
-      file: { url: blob.downloadUrl, name: filename },
-    });
+    return res.status(200).json(result);
   } catch (err) {
-    console.error('Upload failed', err);
-    const message = err && err.name && err.name.startsWith('Blob') ? err.message : 'Upload failed';
-    return res.status(500).json({ error: message });
+    console.error('Upload token/callback failed', err);
+    const status = err && /not authenticated/i.test(err.message || '') ? 401 : 400;
+    return res.status(status).json({ error: (err && err.message) || 'Upload failed' });
   }
-}
+};
 
 // Keep only the MAX_FILES most recently uploaded files; delete the rest.
 async function enforceRetention() {

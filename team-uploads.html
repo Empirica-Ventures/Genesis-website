@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Uploads | Genesis Education</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .upload-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem var(--page-pad) 5rem;
+      background: var(--off-white);
+    }
+    .upload-page__logo { height: 36px; margin-bottom: 2.5rem; }
+    .upload-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      box-shadow: 0 10px 40px rgba(42,42,42,0.08);
+    }
+    .upload-card h1 { font-size: 1.375rem; margin-bottom: 0.4rem; color: var(--charcoal); }
+    .upload-card p.hint { font-size: 0.875rem; color: #7a7a7a; margin-bottom: 1.5rem; }
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 0.8125rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .field input[type="password"] {
+      width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-md);
+      border: 1.5px solid #e2e0da; font: inherit; font-size: 0.9375rem;
+    }
+    .field input[type="password"]:focus { outline: none; border-color: var(--teal); }
+    .error-msg {
+      display: none; background: #fdecea; color: #b3261e; border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem; font-size: 0.8125rem; margin-bottom: 1rem;
+    }
+    .error-msg.is-visible { display: block; }
+
+    .workspace { display: none; width: 100%; max-width: 720px; }
+    .workspace.is-visible { display: block; }
+    .workspace__header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .workspace__header h1 { font-size: 1.5rem; color: var(--charcoal); }
+
+    .dropzone {
+      border: 2px dashed #cfcbc0; border-radius: var(--radius-lg);
+      background: var(--white); padding: 2.5rem 1.5rem; text-align: center;
+      cursor: pointer; transition: var(--transition); margin-bottom: 1.75rem;
+    }
+    .dropzone:hover, .dropzone.is-dragover { border-color: var(--teal); background: #f2fbfc; }
+    .dropzone p { color: #7a7a7a; font-size: 0.9375rem; }
+    .dropzone strong { color: var(--charcoal); }
+    .dropzone input[type="file"] { display: none; }
+
+    .upload-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
+    .upload-list__item {
+      display: flex; align-items: center; gap: 0.75rem; background: var(--white);
+      border-radius: var(--radius-md); padding: 0.7rem 1rem; font-size: 0.875rem;
+    }
+    .upload-list__item .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--charcoal); }
+    .upload-list__item .status { font-size: 0.75rem; color: #7a7a7a; white-space: nowrap; }
+    .upload-list__item .status.is-error { color: #b3261e; }
+    .upload-list__item .status.is-done { color: var(--deep-teal); }
+    .progress-track { flex: 1; height: 4px; background: #e9e7e0; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; background: var(--teal); transition: width 0.15s linear; }
+
+    .files-panel { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; }
+    .files-panel h2 { font-size: 1rem; color: var(--charcoal); margin-bottom: 1rem; }
+    .files-panel .empty { color: #7a7a7a; font-size: 0.875rem; }
+    .file-row {
+      display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 0;
+      border-bottom: 1px solid #f0eee8; font-size: 0.875rem;
+    }
+    .file-row:last-child { border-bottom: none; }
+    .file-row .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--charcoal); font-weight: 700; }
+    .file-row .meta { color: #7a7a7a; font-size: 0.8125rem; white-space: nowrap; }
+    .file-row a.download { color: var(--deep-teal); font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .file-row a.download:hover { text-decoration: underline; }
+
+    .retention-note { font-size: 0.8125rem; color: #7a7a7a; margin-top: 1rem; }
+    .logout-link { font-size: 0.8125rem; color: #7a7a7a; text-decoration: underline; cursor: pointer; background: none; border: none; font-family: inherit; }
+  </style>
+</head>
+<body>
+
+<div class="upload-page">
+  <img class="upload-page__logo" src="assets/images/logo.png" alt="Genesis Education">
+
+  <!-- ── PASSWORD GATE ── -->
+  <form id="login-card" class="upload-card" autocomplete="off">
+    <h1>Team Uploads</h1>
+    <p class="hint">Enter the team password to view and upload files.</p>
+    <div class="error-msg" id="login-error"></div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autofocus>
+    </div>
+    <button type="submit" class="btn btn--coral" style="width:100%;" id="login-btn">Enter</button>
+  </form>
+
+  <!-- ── WORKSPACE (shown after login) ── -->
+  <div class="workspace" id="workspace">
+    <div class="workspace__header">
+      <h1>Team Uploads</h1>
+      <button class="logout-link" id="logout-btn">Log out</button>
+    </div>
+
+    <div class="error-msg" id="upload-error"></div>
+
+    <label class="dropzone" id="dropzone" for="file-input">
+      <p><strong>Click to choose a file</strong> or drag and drop it here</p>
+      <input type="file" id="file-input" multiple>
+    </label>
+
+    <div class="upload-list" id="upload-list"></div>
+
+    <div class="files-panel">
+      <h2>Uploaded files</h2>
+      <div id="files-list"><p class="empty">Loading…</p></div>
+      <p class="retention-note" id="retention-note"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/team-uploads.js"></script>
+</body>
+</html>

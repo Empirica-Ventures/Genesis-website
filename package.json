@@ -1,0 +1,8 @@
+{
+  "name": "genesis-website",
+  "private": true,
+  "description": "Genesis Education Solutions marketing site + team upload page (Vercel static + serverless functions).",
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  }
+}

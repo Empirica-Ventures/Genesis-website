@@ -17,6 +17,15 @@ FormSubmit). The header/nav and footer are duplicated in every page, so
 change them in all of them. New-design images are in `assets/web/`.
 `team-uploads.html` still uses the older `css/styles.css`.
 
+## Deploying
+
+Vercel project `genesis-site` (team "ultrafay's projects") deploys from this
+repo: pushes to `main` go to production (genesiseducation.solutions), other
+branches get preview deployments. If a merge doesn't show up in Vercel's
+Deployments list at all, the GitHub link is broken — check the project's
+Settings → Git connection and that the Vercel account has GitHub under
+Account Settings → Authentication.
+
 ## QR codes
 
 QR codes for this project (business card, feedback form, etc.) are

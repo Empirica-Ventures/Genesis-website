@@ -15,9 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <style>
@@ -29,40 +28,40 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="/"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
-          <div class="site-nav__item"><a class="site-nav__link" href="index.html">Home</a></div>
+          <div class="site-nav__item"><a class="site-nav__link" href="/">Home</a></div>
           <div class="site-nav__item" data-nav-group>
             <button type="button" class="site-nav__link is-active" aria-expanded="false" aria-haspopup="true">Program<span class="site-nav__chev" aria-hidden="true"></span></button>
             <div class="site-nav__menu">
-              <a href="why-pbl.html"><span class="site-nav__menu-title">Why PBL</span><span class="site-nav__menu-desc">What real project-based learning is</span></a>
-              <a href="program.html"><span class="site-nav__menu-title">The Program</span><span class="site-nav__menu-desc">Deliverables, assessment and roadmap</span></a>
-              <a href="sample-project.html" class="is-active" aria-current="page"><span class="site-nav__menu-title">Sample Project</span><span class="site-nav__menu-desc">The Formula, stage by stage</span></a>
+              <a href="/why-pbl"><span class="site-nav__menu-title">Why PBL</span><span class="site-nav__menu-desc">What real project-based learning is</span></a>
+              <a href="/program"><span class="site-nav__menu-title">The Program</span><span class="site-nav__menu-desc">Deliverables, assessment and roadmap</span></a>
+              <a href="/sample-project" class="is-active" aria-current="page"><span class="site-nav__menu-title">Sample Project</span><span class="site-nav__menu-desc">The Formula, stage by stage</span></a>
             </div>
           </div>
-          <div class="site-nav__item"><a class="site-nav__link" href="case-studies.html">Our Partners</a></div>
+          <div class="site-nav__item"><a class="site-nav__link" href="/case-studies">Our Partners</a></div>
           <div class="site-nav__item" data-nav-group>
             <button type="button" class="site-nav__link" aria-expanded="false" aria-haspopup="true">About<span class="site-nav__chev" aria-hidden="true"></span></button>
             <div class="site-nav__menu">
-              <a href="team.html"><span class="site-nav__menu-title">Team</span><span class="site-nav__menu-desc">The people behind Genesis</span></a>
-              <a href="faq.html"><span class="site-nav__menu-title">FAQ</span><span class="site-nav__menu-desc">Questions school leaders ask</span></a>
+              <a href="/team"><span class="site-nav__menu-title">Team</span><span class="site-nav__menu-desc">The people behind Genesis</span></a>
+              <a href="/faq"><span class="site-nav__menu-title">FAQ</span><span class="site-nav__menu-desc">Questions school leaders ask</span></a>
             </div>
           </div>
-        <a href="contact.html" class="ds-btn ds-btn--primary ds-btn--md">Talk to Us</a>
+        <a href="/contact" class="ds-btn ds-btn--primary ds-btn--md">Talk to Us</a>
       </nav>
       <button type="button" class="site-header__burger" aria-label="Menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
     </div>
     <div class="site-mobile-menu">
-      <a class="site-mobile-menu__link" href="index.html">Home</a>
+      <a class="site-mobile-menu__link" href="/">Home</a>
       <span class="site-mobile-menu__head">PROGRAM</span>
-      <a class="site-mobile-menu__link" href="why-pbl.html">Why PBL</a>
-      <a class="site-mobile-menu__link" href="program.html">The Program</a>
-      <a class="site-mobile-menu__link is-active" href="sample-project.html">Sample Project</a>
-      <a class="site-mobile-menu__link" href="case-studies.html">Our Partners</a>
+      <a class="site-mobile-menu__link" href="/why-pbl">Why PBL</a>
+      <a class="site-mobile-menu__link" href="/program">The Program</a>
+      <a class="site-mobile-menu__link is-active" href="/sample-project">Sample Project</a>
+      <a class="site-mobile-menu__link" href="/case-studies">Our Partners</a>
       <span class="site-mobile-menu__head">ABOUT</span>
-      <a class="site-mobile-menu__link" href="team.html">Team</a>
-      <a class="site-mobile-menu__link" href="faq.html">FAQ</a>
-      <a href="contact.html" class="ds-btn ds-btn--primary ds-btn--lg ds-btn--full">Talk to Us</a>
+      <a class="site-mobile-menu__link" href="/team">Team</a>
+      <a class="site-mobile-menu__link" href="/faq">FAQ</a>
+      <a href="/contact" class="ds-btn ds-btn--primary ds-btn--lg ds-btn--full">Talk to Us</a>
     </div>
   </header>
 
@@ -140,7 +139,7 @@
       <p style="margin:0; font-size:16px; line-height:1.9; color:var(--fg-2);">Identify the drinks you tasted either as solution or suspension.<br>Cup A <span style="display:inline-block; width:110px; border-bottom:1.5px solid var(--color-charcoal-400);"></span>, Cup B <span style="display:inline-block; width:110px; border-bottom:1.5px solid var(--color-charcoal-400);"></span>, &amp; Cup C <span style="display:inline-block; width:110px; border-bottom:1.5px solid var(--color-charcoal-400);"></span></p>
       <p style="margin:0; font-size:16px; line-height:1.9; color:var(--fg-2);">Which of the drinks you tasted are dilute, and which are concentrated?<br>Dilute <span style="display:inline-block; width:160px; border-bottom:1.5px solid var(--color-charcoal-400);"></span> Concentrated <span style="display:inline-block; width:160px; border-bottom:1.5px solid var(--color-charcoal-400);"></span></p>
       <div style="display:grid; grid-template-columns:120px 1fr; gap:24px; align-items:center; background:var(--color-teal-50); border-radius:16px; padding:24px;">
-        <img src="assets/booklet/p7-9.png" alt="QR code for the video" style="width:120px; height:120px; display:block; background:#ffffff; border-radius:8px;">
+        <img decoding="async" loading="lazy" src="assets/booklet/p7-9.png" alt="QR code for the video" style="width:120px; height:120px; display:block; background:#ffffff; border-radius:8px;">
         <div style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:700; letter-spacing:0.14em; color:var(--color-teal-700);">SCAN TO WATCH THE VIDEO</span>
           <p style="margin:0; font-size:16px; line-height:1.6; color:var(--color-charcoal-800);">Watch this video to check your understanding: <strong>Mixtures and Solutions: What is the difference?</strong><sup>1</sup></p>
@@ -300,7 +299,7 @@
         <span style="font-size:12px; font-weight:700; letter-spacing:0.22em; color:var(--color-teal-100);">ONE OF 6 PROJECTS PER GRADE</span>
         <h2 style="margin:0; font-size:clamp(28px, 3.4vw, 42px); font-weight:900; line-height:1.1; letter-spacing:-0.02em; text-wrap:balance;">Bring projects like The Formula to your school.</h2>
       </div>
-      <a href="contact.html" style="display:block; text-decoration:none;"><span class="ds-btn ds-btn--secondary ds-btn--lg">Talk to Us</span></a>
+      <a href="/contact" style="display:block; text-decoration:none;"><span class="ds-btn ds-btn--secondary ds-btn--lg">Talk to Us</span></a>
     </div>
   </section>
 
@@ -314,25 +313,25 @@
         <div style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-charcoal-300);">Explore</span>
           <div style="display:grid; grid-template-columns:repeat(2, max-content); gap:8px 28px;">
-          <a href="why-pbl.html">Why PBL</a>
-          <a href="program.html">The Program</a>
-          <a href="sample-project.html">Sample Project</a>
-          <a href="case-studies.html">Our Partners</a>
-          <a href="team.html">Team</a>
-          <a href="faq.html">FAQ</a>
+          <a href="/why-pbl">Why PBL</a>
+          <a href="/program">The Program</a>
+          <a href="/sample-project">Sample Project</a>
+          <a href="/case-studies">Our Partners</a>
+          <a href="/team">Team</a>
+          <a href="/faq">FAQ</a>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-charcoal-300);">Contact</span>
           <a href="mailto:hello@genesiseducation.solutions" style="overflow-wrap:anywhere;">hello@genesiseducation.solutions</a>
-          <a href="contact.html">Talk to Us</a>
+          <a href="/contact">Talk to Us</a>
           <a href="https://www.genesiseducation.solutions">www.genesiseducation.solutions</a>
           <span style="color:#ffffff; font-size:14px;">204A Shahrah-e-Faisal, SMCHS, Karachi</span>
         </div>
       </div>
       <div style="margin-top:28px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--color-charcoal-300);">
         <span>© Genesis Education Solutions. All rights reserved.</span>
-        <a href="terms.html" style="color:var(--color-charcoal-300); text-decoration:none;">Terms &amp; Conditions</a>
+        <a href="/terms" style="color:var(--color-charcoal-300); text-decoration:none;">Terms &amp; Conditions</a>
       </div>
     </div>
   </footer>

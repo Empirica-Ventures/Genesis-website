@@ -15,7 +15,36 @@ buttons, form fields) and `js/site.js` (nav dropdowns, mobile menu, FAQ
 accordion, partner carousel, training slideshow, contact form via
 FormSubmit). The header/nav and footer are duplicated in every page, so
 change them in all of them. New-design images are in `assets/web/`.
+Links use clean URLs (`/program`, `/case-studies`, `/` for home): `vercel.json`
+has `cleanUrls: true`, which also 308-redirects any old `*.html` link.
 `team-uploads.html` still uses the older `css/styles.css`.
+
+## Keeping it fast
+
+- **Images** in `assets/web/`: logos are lossless WebP at ~2× their on-screen
+  size; team portraits and portrait training photos are WebP (quality 90,
+  training photos capped at 920px tall — the slideshow is ≤460 css px).
+  Hero/section photos stay as their original JPEGs (already well compressed;
+  re-encoding them didn't save much without visible loss). Only switch an
+  image to WebP if it comes out clearly smaller.
+- **Caching**: `vercel.json` caches `assets/web/` and `assets/booklet/` for 30
+  days and `assets/fonts/` for a year. When you *replace* an image, give it a
+  new filename, otherwise returning visitors keep the old one for up to 30 days.
+- **Loading**: the first photo on a page has `fetchpriority="high"`; every
+  other `<img>` has `loading="lazy" decoding="async"`. The training slideshow
+  on `case-studies.html` loads no photos until it's near the viewport.
+- **Fonts**: Lato 400/700/900 is self-hosted from `assets/fonts/` (the
+  hinted builds Google serves to Windows, so text renders exactly as it did
+  with Google Fonts on every platform). Don't add Google Fonts links back.
+
+## Deploying
+
+Vercel project `genesis-site` (team "ultrafay's projects") deploys from this
+repo: pushes to `main` go to production (genesiseducation.solutions), other
+branches get preview deployments. If a merge doesn't show up in Vercel's
+Deployments list at all, the GitHub link is broken — check the project's
+Settings → Git connection and that the Vercel account has GitHub under
+Account Settings → Authentication.
 
 ## QR codes
 

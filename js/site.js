@@ -78,10 +78,12 @@
     var slides = root.querySelectorAll('[data-slide]');
     var counter = root.querySelector('[data-slide-counter]');
     var progress = root.querySelector('[data-slide-progress]');
-    var n = slides.length, idx = 0, paused = false;
+    var n = slides.length, idx = 0, paused = false, visible = false;
     // Only the current slide and its neighbours carry a background image,
-    // so the 22 photos load progressively instead of all at once.
+    // so the 22 photos load progressively instead of all at once — and not
+    // at all until the slideshow is close to scrolling into view.
     var load = function (k) {
+      if (!visible) return;
       var s = slides[(k + n) % n];
       if (s.dataset.loaded) return;
       s.dataset.loaded = '1';
@@ -97,6 +99,15 @@
       if (progress) progress.style.width = ((k + 1) / n * 100) + '%';
     };
     show(0);
+    var reveal = function () { visible = true; show(idx); };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); reveal(); }
+      }, { rootMargin: '600px 0px' });
+      io.observe(root);
+    } else {
+      reveal();
+    }
     root.addEventListener('mouseenter', function () { paused = true; });
     root.addEventListener('mouseleave', function () { paused = false; });
     setInterval(function () { if (!paused) show((idx + 1) % n); }, 3000);

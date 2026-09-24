@@ -16,9 +16,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Genesis Education Solutions","url":"https://www.genesiseducation.solutions","logo":"https://www.genesiseducation.solutions/assets/web/icon-512.png","telephone":"+92-307-2162553","address":{"@type":"PostalAddress","streetAddress":"204A Shahrah-e-Faisal, SMCHS","addressLocality":"Karachi","addressCountry":"PK"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <style>
@@ -31,40 +30,40 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="/"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
-          <div class="site-nav__item"><a class="site-nav__link is-active" href="index.html" aria-current="page">Home</a></div>
+          <div class="site-nav__item"><a class="site-nav__link is-active" href="/" aria-current="page">Home</a></div>
           <div class="site-nav__item" data-nav-group>
             <button type="button" class="site-nav__link" aria-expanded="false" aria-haspopup="true">Program<span class="site-nav__chev" aria-hidden="true"></span></button>
             <div class="site-nav__menu">
-              <a href="why-pbl.html"><span class="site-nav__menu-title">Why PBL</span><span class="site-nav__menu-desc">What real project-based learning is</span></a>
-              <a href="program.html"><span class="site-nav__menu-title">The Program</span><span class="site-nav__menu-desc">Deliverables, assessment and roadmap</span></a>
-              <a href="sample-project.html"><span class="site-nav__menu-title">Sample Project</span><span class="site-nav__menu-desc">The Formula, stage by stage</span></a>
+              <a href="/why-pbl"><span class="site-nav__menu-title">Why PBL</span><span class="site-nav__menu-desc">What real project-based learning is</span></a>
+              <a href="/program"><span class="site-nav__menu-title">The Program</span><span class="site-nav__menu-desc">Deliverables, assessment and roadmap</span></a>
+              <a href="/sample-project"><span class="site-nav__menu-title">Sample Project</span><span class="site-nav__menu-desc">The Formula, stage by stage</span></a>
             </div>
           </div>
-          <div class="site-nav__item"><a class="site-nav__link" href="case-studies.html">Our Partners</a></div>
+          <div class="site-nav__item"><a class="site-nav__link" href="/case-studies">Our Partners</a></div>
           <div class="site-nav__item" data-nav-group>
             <button type="button" class="site-nav__link" aria-expanded="false" aria-haspopup="true">About<span class="site-nav__chev" aria-hidden="true"></span></button>
             <div class="site-nav__menu">
-              <a href="team.html"><span class="site-nav__menu-title">Team</span><span class="site-nav__menu-desc">The people behind Genesis</span></a>
-              <a href="faq.html"><span class="site-nav__menu-title">FAQ</span><span class="site-nav__menu-desc">Questions school leaders ask</span></a>
+              <a href="/team"><span class="site-nav__menu-title">Team</span><span class="site-nav__menu-desc">The people behind Genesis</span></a>
+              <a href="/faq"><span class="site-nav__menu-title">FAQ</span><span class="site-nav__menu-desc">Questions school leaders ask</span></a>
             </div>
           </div>
-        <a href="contact.html" class="ds-btn ds-btn--primary ds-btn--md">Talk to Us</a>
+        <a href="/contact" class="ds-btn ds-btn--primary ds-btn--md">Talk to Us</a>
       </nav>
       <button type="button" class="site-header__burger" aria-label="Menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
     </div>
     <div class="site-mobile-menu">
-      <a class="site-mobile-menu__link is-active" href="index.html">Home</a>
+      <a class="site-mobile-menu__link is-active" href="/">Home</a>
       <span class="site-mobile-menu__head">PROGRAM</span>
-      <a class="site-mobile-menu__link" href="why-pbl.html">Why PBL</a>
-      <a class="site-mobile-menu__link" href="program.html">The Program</a>
-      <a class="site-mobile-menu__link" href="sample-project.html">Sample Project</a>
-      <a class="site-mobile-menu__link" href="case-studies.html">Our Partners</a>
+      <a class="site-mobile-menu__link" href="/why-pbl">Why PBL</a>
+      <a class="site-mobile-menu__link" href="/program">The Program</a>
+      <a class="site-mobile-menu__link" href="/sample-project">Sample Project</a>
+      <a class="site-mobile-menu__link" href="/case-studies">Our Partners</a>
       <span class="site-mobile-menu__head">ABOUT</span>
-      <a class="site-mobile-menu__link" href="team.html">Team</a>
-      <a class="site-mobile-menu__link" href="faq.html">FAQ</a>
-      <a href="contact.html" class="ds-btn ds-btn--primary ds-btn--lg ds-btn--full">Talk to Us</a>
+      <a class="site-mobile-menu__link" href="/team">Team</a>
+      <a class="site-mobile-menu__link" href="/faq">FAQ</a>
+      <a href="/contact" class="ds-btn ds-btn--primary ds-btn--lg ds-btn--full">Talk to Us</a>
     </div>
   </header>
 
@@ -79,7 +78,7 @@
       </div>
     </div>
     <div style="position:relative; height:clamp(260px, 38vw, 520px); overflow:hidden;">
-      <img src="assets/web/outdoor-lab.jpg" alt="Students working on projects in an outdoor learning lab" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
+      <img src="assets/web/outdoor-lab.jpg" fetchpriority="high" alt="Students working on projects in an outdoor learning lab" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, var(--color-charcoal-900) 0%, rgba(10,10,10,0) 38%);"></div>
     </div>
   </section>
@@ -121,7 +120,7 @@
       <div style="padding:28px 24px 28px 0; display:flex; flex-direction:column; gap:12px;"><span style="font-size:44px; font-weight:900; line-height:1; color:var(--color-cyan-500);">05</span><h3 style="margin:0; font-size:19px; font-weight:900; color:var(--color-charcoal-800);">Explain their reasoning</h3><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2);">Communicate not just what they did, but why, publicly, to others.</p></div>
     </div>
     <div style="margin-top:56px; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,380px),1fr)); gap:40px; align-items:center;">
-      <img src="assets/web/classroom-wide.jpg" alt="Students building a project together in a classroom" loading="lazy" style="aspect-ratio:16/10; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center;">
+      <img decoding="async" src="assets/web/classroom-wide.jpg" alt="Students building a project together in a classroom" loading="lazy" style="aspect-ratio:16/10; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center;">
       <p style="margin:0; font-size:clamp(22px, 2.4vw, 30px); font-weight:900; line-height:1.3; letter-spacing:-0.01em; color:var(--color-charcoal-800); text-wrap:balance;">When a project is designed properly, a student cannot simply copy an answer. <span style="color:var(--color-teal-600);">They must think.</span></p>
     </div>
   </section>
@@ -157,9 +156,9 @@
 
   <section style="background:var(--bg-secondary); border-top:1px solid var(--border-default);">
     <div style="max-width:1280px; margin:0 auto; padding:64px 24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,240px),1fr)); gap:20px;">
-      <a class="hv-1" href="program.html" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-teal-600);">THE PROGRAM</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">What it is, what schools receive, and how it is assessed</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">See the program →</span></a>
-      <a class="hv-2" href="sample-project.html" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-coral-600);">SAMPLE PROJECT</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">The Formula: design, make, and launch Pakistan's next great drink</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">Read the full project →</span></a>
-      <a class="hv-3" href="case-studies.html" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-cyan-600);">OUR PARTNERS</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">Partner schools and teacher training in action</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">See our schools →</span></a>
+      <a class="hv-1" href="/program" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-teal-600);">THE PROGRAM</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">What it is, what schools receive, and how it is assessed</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">See the program →</span></a>
+      <a class="hv-2" href="/sample-project" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-coral-600);">SAMPLE PROJECT</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">The Formula: design, make, and launch Pakistan's next great drink</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">Read the full project →</span></a>
+      <a class="hv-3" href="/case-studies" style="text-decoration:none; background:#ffffff; border:1px solid var(--border-default); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:12px; color:var(--fg-1);"><span style="font-size:12px; font-weight:700; letter-spacing:0.18em; color:var(--color-cyan-600);">OUR PARTNERS</span><span style="font-size:22px; font-weight:900; line-height:1.25; color:var(--color-charcoal-800);">Partner schools and teacher training in action</span><span style="font-size:14px; font-weight:700; color:var(--color-teal-600); margin-top:auto;">See our schools →</span></a>
     </div>
   </section>
 
@@ -169,7 +168,7 @@
       <h2 style="margin:0; font-size:clamp(32px, 4.6vw, 60px); font-weight:900; line-height:1.05; letter-spacing:-0.025em; max-width:900px; text-wrap:balance;">We are building this for the long term.</h2>
       <p style="margin:0; font-size:19px; line-height:1.6; max-width:680px; color:var(--color-teal-50);">Schools that embed the Genesis Program now will have a meaningful head start over those that wait. We would like your school to be one of them.</p>
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
-        <a href="contact.html" style="display:block; text-decoration:none;"><span class="ds-btn ds-btn--secondary ds-btn--lg">Talk to Us</span></a>
+        <a href="/contact" style="display:block; text-decoration:none;"><span class="ds-btn ds-btn--secondary ds-btn--lg">Talk to Us</span></a>
         
       </div>
     </div>
@@ -185,25 +184,25 @@
         <div style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-charcoal-300);">Explore</span>
           <div style="display:grid; grid-template-columns:repeat(2, max-content); gap:8px 28px;">
-          <a href="why-pbl.html">Why PBL</a>
-          <a href="program.html">The Program</a>
-          <a href="sample-project.html">Sample Project</a>
-          <a href="case-studies.html">Our Partners</a>
-          <a href="team.html">Team</a>
-          <a href="faq.html">FAQ</a>
+          <a href="/why-pbl">Why PBL</a>
+          <a href="/program">The Program</a>
+          <a href="/sample-project">Sample Project</a>
+          <a href="/case-studies">Our Partners</a>
+          <a href="/team">Team</a>
+          <a href="/faq">FAQ</a>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-charcoal-300);">Contact</span>
           <a href="mailto:hello@genesiseducation.solutions" style="overflow-wrap:anywhere;">hello@genesiseducation.solutions</a>
-          <a href="contact.html">Talk to Us</a>
+          <a href="/contact">Talk to Us</a>
           <a href="https://www.genesiseducation.solutions">www.genesiseducation.solutions</a>
           <span style="color:#ffffff; font-size:14px;">204A Shahrah-e-Faisal, SMCHS, Karachi</span>
         </div>
       </div>
       <div style="margin-top:28px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--color-charcoal-300);">
         <span>© Genesis Education Solutions. All rights reserved.</span>
-        <a href="terms.html" style="color:var(--color-charcoal-300); text-decoration:none;">Terms &amp; Conditions</a>
+        <a href="/terms" style="color:var(--color-charcoal-300); text-decoration:none;">Terms &amp; Conditions</a>
       </div>
     </div>
   </footer>

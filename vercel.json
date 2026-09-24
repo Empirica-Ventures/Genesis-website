@@ -4,6 +4,11 @@
       "source": "/assets/files/business-card.pdf",
       "destination": "/assets/files/Structured%20PBL%20by%20Genesis%20Education%20Solutions.pdf",
       "permanent": true
+    },
+    {
+      "source": "/education-solutions.html",
+      "destination": "/program.html",
+      "permanent": true
     }
   ],
   "headers": [

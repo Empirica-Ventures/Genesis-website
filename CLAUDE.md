@@ -5,6 +5,18 @@ with a small set of serverless functions under `api/` for the password-gated
 team upload page (`team-uploads.html`). See `.env.example` for the env vars
 that page needs.
 
+Public pages (`index.html`, `why-pbl.html`, `program.html`,
+`sample-project.html`, `case-studies.html`, `team.html`, `faq.html`,
+`contact.html`, `terms.html`) come from the Claude Design export in
+[Ultrafay/genesis-new-design](https://github.com/Ultrafay/genesis-new-design):
+section styling is inline, as exported. Shared pieces live in
+`css/tokens.css` (design-system tokens), `css/site.css` (header/nav, footer,
+buttons, form fields) and `js/site.js` (nav dropdowns, mobile menu, FAQ
+accordion, partner carousel, training slideshow, contact form via
+FormSubmit). The header/nav and footer are duplicated in every page, so
+change them in all of them. New-design images are in `assets/web/`.
+`team-uploads.html` still uses the older `css/styles.css`.
+
 ## QR codes
 
 QR codes for this project (business card, feedback form, etc.) are

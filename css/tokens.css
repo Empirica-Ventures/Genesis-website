@@ -1,0 +1,323 @@
+/* Genesis Education Solutions design tokens (from the design system export). Lato is loaded via <link> in each page. */
+
+/* ---- colors ---- */
+/* ============================================================
+   Genesis Education Solutions — Color Tokens
+   ============================================================ */
+
+:root {
+  /* ── Brand Palette ──────────────────────────────────────── */
+
+  /* Teal — primary action, brand identity */
+  --color-teal-50:  #e8f6f6;
+  --color-teal-100: #c3e9e9;
+  --color-teal-200: #8dd4d4;
+  --color-teal-300: #55bfbf;
+  --color-teal-400: #2eacac;
+  --color-teal-500: #199696; /* brand primary */
+  --color-teal-600: #147a7a;
+  --color-teal-700: #0f5d5d;
+  --color-teal-800: #093f3f;
+  --color-teal-900: #042020;
+
+  /* Cyan — accent, highlights, CTA text */
+  --color-cyan-50:  #e7f8fc;
+  --color-cyan-100: #c0eff8;
+  --color-cyan-200: #84e1f1;
+  --color-cyan-300: #4dd2ea;
+  --color-cyan-400: #32c8e1; /* brand accent */
+  --color-cyan-500: #1baabd;
+  --color-cyan-600: #138999;
+  --color-cyan-700: #0d6875;
+  --color-cyan-800: #074751;
+  --color-cyan-900: #02272d;
+
+  /* Coral — secondary, alerts, warmth */
+  --color-coral-50:  #fef1ed;
+  --color-coral-100: #fcd9d1;
+  --color-coral-200: #f8b3a4;
+  --color-coral-300: #f28d77;
+  --color-coral-400: #ec7560;
+  --color-coral-500: #e8664a; /* brand secondary */
+  --color-coral-600: #c44f38;
+  --color-coral-700: #9e3c2a;
+  --color-coral-800: #78291c;
+  --color-coral-900: #52170e;
+
+  /* Charcoal — text, dark elements */
+  --color-charcoal-50:  #f5f5f5;
+  --color-charcoal-100: #e8e8e8;
+  --color-charcoal-200: #d0d0d0;
+  --color-charcoal-300: #b0b0b0;
+  --color-charcoal-400: #888888;
+  --color-charcoal-500: #646464;
+  --color-charcoal-600: #484848;
+  --color-charcoal-700: #323232; /* brand charcoal */
+  --color-charcoal-800: #1e1e1e;
+  --color-charcoal-900: #0a0a0a;
+
+  /* Neutral grays */
+  --color-gray-0:   #ffffff;
+  --color-gray-50:  #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #868e96;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+
+  /* ── Semantic Aliases ───────────────────────────────────── */
+
+  /* Foreground */
+  --fg-1: var(--color-charcoal-700);       /* primary text */
+  --fg-2: var(--color-gray-700);           /* secondary text */
+  --fg-3: var(--color-gray-600);           /* muted / captions */
+  --fg-disabled: var(--color-gray-400);    /* disabled state */
+  --fg-on-brand: #ffffff;                  /* text on brand color */
+  --fg-link: var(--color-teal-500);        /* links */
+  --fg-link-hover: var(--color-teal-600);
+
+  /* Background */
+  --bg-primary: #ffffff;
+  --bg-secondary: var(--color-gray-50);
+  --bg-tertiary: var(--color-gray-100);
+  --bg-brand: var(--color-teal-500);
+  --bg-brand-subtle: var(--color-teal-50);
+  --bg-accent: var(--color-cyan-400);
+  --bg-accent-subtle: var(--color-cyan-50);
+  --bg-coral: var(--color-coral-500);
+  --bg-coral-subtle: var(--color-coral-50);
+
+  /* Border */
+  --border-default: var(--color-gray-200);
+  --border-subtle: var(--color-gray-100);
+  --border-strong: var(--color-gray-400);
+  --border-brand: var(--color-teal-500);
+  --border-focus: var(--color-teal-400);
+
+  /* Status */
+  --color-success: #1e9e6e;
+  --color-success-bg: #e8f7f1;
+  --color-warning: #d9840d;
+  --color-warning-bg: #fef4e6;
+  --color-error: #d63c3c;
+  --color-error-bg: #fef0f0;
+  --color-info: var(--color-cyan-500);
+  --color-info-bg: var(--color-cyan-50);
+}
+
+/* ---- typography ---- */
+/* ============================================================
+   Genesis Education Solutions — Typography Tokens
+   ============================================================
+   Primary font:    Lato (Google Fonts) — all brand communications
+   Supporting font: Montserrat Light — logo branch descriptor only
+   ============================================================ */
+
+/* ── JetBrains Mono — self-hosted woff2 ────────────────────── */
+:root {
+  /* ── Font Families ──────────────────────────────────────── */
+  --font-sans: 'Lato', system-ui, -apple-system, sans-serif;
+  --font-logo-descriptor: 'Montserrat', 'Lato', sans-serif; /* Montserrat Light — logo use only */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* ── Font Sizes ─────────────────────────────────────────── */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  1.875rem;   /* 30px */
+  --text-3xl:  2.25rem;    /* 36px */
+  --text-4xl:  3rem;       /* 48px */
+  --text-5xl:  3.75rem;    /* 60px */
+  --text-6xl:  4.5rem;     /* 72px */
+
+  /* ── Font Weights ───────────────────────────────────────── */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-light:     300;
+  --weight-extrabold: 800;
+  --weight-black:     900;
+
+  /* ── Line Heights ───────────────────────────────────────── */
+  --leading-none:     1;
+  --leading-tight:    1.25;
+  --leading-snug:     1.375;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.625;
+  --leading-loose:    2;
+
+  /* ── Letter Spacing ─────────────────────────────────────── */
+  --tracking-tight:   -0.025em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.025em;
+  --tracking-wider:   0.05em;
+  --tracking-widest:  0.12em;  /* for ALL-CAPS labels */
+
+  /* ── Semantic Roles ─────────────────────────────────────── */
+
+  /* Brand typographic scale (from brand guide p.16)
+     H1: 36px | H2: 28px | H3: 20px | Body: 15px | Small: 12px */
+
+  /* Display / Hero */
+  --font-display:         var(--font-sans);
+  --text-display-size:    var(--text-5xl);
+  --text-display-weight:  var(--weight-black);
+  --text-display-leading: var(--leading-tight);
+  --text-display-tracking: var(--tracking-tight);
+
+  /* Heading levels — exact brand spec */
+  --text-h1-size:    2.25rem;  /* 36px */
+  --text-h1-weight:  var(--weight-black);
+  --text-h2-size:    1.75rem;  /* 28px */
+  --text-h2-weight:  var(--weight-bold);
+  --text-h3-size:    1.25rem;  /* 20px */
+  --text-h3-weight:  var(--weight-bold);
+  --text-h4-size:    var(--text-xl);
+  --text-h4-weight:  var(--weight-bold);
+  --text-h5-size:    var(--text-lg);
+  --text-h5-weight:  var(--weight-semibold);
+
+  /* Body — exact brand spec */
+  --text-body-size:    0.9375rem; /* 15px */
+  --text-body-weight:  var(--weight-regular);
+  --text-body-leading: var(--leading-relaxed);
+
+  /* UI chrome */
+  --text-label-size:    0.75rem;  /* 12px — brand 'small' */
+  --text-label-weight:  var(--weight-bold);
+  --text-label-tracking: var(--tracking-widest);
+  --text-caption-size:  0.75rem;  /* 12px */
+  --text-caption-weight: var(--weight-regular);
+}
+
+/* ---- spacing ---- */
+/* ============================================================
+   Genesis Education Solutions — Spacing Tokens
+   Base: 4px (0.25rem)
+   ============================================================ */
+
+:root {
+  /* ── Raw Scale ──────────────────────────────────────────── */
+  --space-0:   0;
+  --space-px:  1px;
+  --space-0-5: 0.125rem;  /*  2px */
+  --space-1:   0.25rem;   /*  4px */
+  --space-1-5: 0.375rem;  /*  6px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-2-5: 0.625rem;  /* 10px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-3-5: 0.875rem;  /* 14px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-7:   1.75rem;   /* 28px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-14:  3.5rem;    /* 56px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-28:  7rem;      /* 112px */
+  --space-32:  8rem;      /* 128px */
+  --space-40:  10rem;     /* 160px */
+  --space-48:  12rem;     /* 192px */
+  --space-56:  14rem;     /* 224px */
+  --space-64:  16rem;     /* 256px */
+
+  /* ── Semantic Spacing ───────────────────────────────────── */
+
+  /* Component internals */
+  --inset-xs:  var(--space-1) var(--space-2);     /* 4px 8px   — compact chips */
+  --inset-sm:  var(--space-1-5) var(--space-3);   /* 6px 12px  — small buttons */
+  --inset-md:  var(--space-2) var(--space-4);     /* 8px 16px  — default buttons */
+  --inset-lg:  var(--space-3) var(--space-6);     /* 12px 24px — large buttons */
+  --inset-xl:  var(--space-4) var(--space-8);     /* 16px 32px — cards */
+  --inset-card: var(--space-6);                   /* 24px all sides — standard card */
+
+  /* Layout gaps */
+  --gap-xs:   var(--space-2);   /*  8px */
+  --gap-sm:   var(--space-3);   /* 12px */
+  --gap-md:   var(--space-4);   /* 16px */
+  --gap-lg:   var(--space-6);   /* 24px */
+  --gap-xl:   var(--space-8);   /* 32px */
+  --gap-2xl:  var(--space-12);  /* 48px */
+  --gap-3xl:  var(--space-16);  /* 64px */
+
+  /* Section vertical rhythm */
+  --section-padding-y: var(--space-20);  /* 80px */
+  --section-padding-x: var(--space-8);   /* 32px */
+
+  /* Max widths */
+  --max-w-sm:    640px;
+  --max-w-md:    768px;
+  --max-w-lg:    1024px;
+  --max-w-xl:    1280px;
+  --max-w-2xl:   1440px;
+  --max-w-prose: 65ch;
+}
+
+/* ---- effects ---- */
+/* ============================================================
+   Genesis Education Solutions — Effects Tokens
+   Radius, shadows, transitions, z-index
+   ============================================================ */
+
+:root {
+  /* ── Border Radius ──────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-3xl:  32px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px 0 rgba(50, 50, 50, 0.05);
+  --shadow-sm:  0 2px 4px 0 rgba(50, 50, 50, 0.07);
+  --shadow-md:  0 4px 12px -2px rgba(50, 50, 50, 0.10),
+                0 2px 4px -1px rgba(50, 50, 50, 0.06);
+  --shadow-lg:  0 10px 24px -4px rgba(50, 50, 50, 0.12),
+                0 4px 8px  -2px rgba(50, 50, 50, 0.06);
+  --shadow-xl:  0 20px 40px -8px rgba(50, 50, 50, 0.14),
+                0 8px 16px -4px rgba(50, 50, 50, 0.07);
+  --shadow-brand: 0 4px 16px -2px rgba(25, 150, 150, 0.30);
+  --shadow-coral: 0 4px 16px -2px rgba(232, 102, 74, 0.28);
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+
+  --duration-fast:    150ms; /* @kind other */
+  --duration-base:    200ms; /* @kind other */
+  --duration-slow:    300ms; /* @kind other */
+  --duration-slower:  500ms; /* @kind other */
+
+  --transition-fast:   var(--duration-fast)  var(--ease-default); /* @kind other */
+  --transition-base:   var(--duration-base)  var(--ease-default); /* @kind other */
+  --transition-slow:   var(--duration-slow)  var(--ease-default); /* @kind other */
+  --transition-spring: var(--duration-slow)  var(--ease-spring); /* @kind other */
+
+  /* ── Z-index scale ──────────────────────────────────────── */
+  --z-base:     0; /* @kind other */
+  --z-raised:   10; /* @kind other */
+  --z-dropdown: 100; /* @kind other */
+  --z-sticky:   200; /* @kind other */
+  --z-overlay:  300; /* @kind other */
+  --z-modal:    400; /* @kind other */
+  --z-toast:    500; /* @kind other */
+  --z-tooltip:  600; /* @kind other */
+}

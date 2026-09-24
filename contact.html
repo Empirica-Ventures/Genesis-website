@@ -15,9 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <style>
@@ -28,7 +27,7 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
           <div class="site-nav__item"><a class="site-nav__link" href="index.html">Home</a></div>
           <div class="site-nav__item" data-nav-group>
@@ -112,7 +111,7 @@
   </section>
 
   <section style="position:relative; height:clamp(220px, 30vw, 420px); overflow:hidden;">
-      <img src="assets/web/desk-notebooks.jpg" alt="Student notebooks and project work on a desk" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 55%;">
+      <img decoding="async" loading="lazy" src="assets/web/desk-notebooks.jpg" alt="Student notebooks and project work on a desk" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 55%;">
     <div style="position:absolute; inset:0; background:linear-gradient(180deg, var(--color-charcoal-900) 0%, rgba(10,10,10,0) 40%);"></div>
   </section>
 

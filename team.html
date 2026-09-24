@@ -15,9 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 </head>
@@ -25,7 +24,7 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
           <div class="site-nav__item"><a class="site-nav__link" href="index.html">Home</a></div>
           <div class="site-nav__item" data-nav-group>
@@ -75,7 +74,7 @@
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-adil.jpg" alt="Muhammad Adil, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-adil.webp" alt="Muhammad Adil, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Muhammad Adil</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">ACADEMIC LEAD</span>
@@ -90,7 +89,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-nabeel.jpg" alt="Nabeel Khan Afridi, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-nabeel.webp" alt="Nabeel Khan Afridi, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Nabeel Khan Afridi</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">GROWTH LEAD</span>
@@ -105,7 +104,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-wasi.jpg" alt="Wasi Imran, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-wasi.webp" alt="Wasi Imran, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Wasi Imran</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">PROJECT MANAGER</span>
@@ -120,7 +119,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-hasnain.jpg" alt="Hasnain Murad, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-hasnain.webp" alt="Hasnain Murad, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Hasnain Murad</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">ACADEMIC MANAGER</span>
@@ -135,7 +134,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-ibrahim.jpg" alt="Muhammad Ibrahim, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-ibrahim.webp" alt="Muhammad Ibrahim, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Muhammad Ibrahim</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">SENIOR ACADEMIC ASSOCIATE</span>
@@ -150,7 +149,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-jawad.jpg" alt="Muhammad Jawad, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-jawad.webp" alt="Muhammad Jawad, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Muhammad Jawad</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">CREATIVE ASSOCIATE</span>
@@ -165,7 +164,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-zain.jpg" alt="Muhammad Zain, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-zain.webp" alt="Muhammad Zain, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Muhammad Zain</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">ACADEMIC ASSOCIATE</span>
@@ -183,7 +182,7 @@
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-muzzammil.jpg" alt="Muzzammil Munaf, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-muzzammil.webp" alt="Muzzammil Munaf, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Muzzammil Munaf</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">PARTNER</span>
@@ -198,7 +197,7 @@
       </div>
       <div style="border:1px solid var(--border-default); border-radius:16px; background:#ffffff; padding:20px; display:flex; flex-direction:column; gap:14px; container-type:inline-size; min-width:0; box-sizing:border-box; flex:0 1 calc((100% - 32px) / 3); min-width:min(100%, 250px); min-height:360px;">
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="width:72px; height:72px;"><img src="assets/web/team-rizwan.jpg" alt="Rizwan Mujtaba, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
+          <div style="width:72px; height:72px;"><img decoding="async" src="assets/web/team-rizwan.webp" alt="Rizwan Mujtaba, Genesis Education Solutions" loading="lazy" style="width:72px; height:72px; object-fit:cover; border-radius:12px; display:block;"></div>
           <div style="display:flex; flex-direction:column; gap:5px; min-width:0;">
             <h2 style="margin:0; font-size:min(20px, 8.4cqi); font-weight:900; line-height:1.25; color:var(--color-charcoal-800); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Rizwan Mujtaba</h2>
             <span style="font-size:min(12px, 5cqi); font-weight:700; letter-spacing:0.1em; color:var(--color-teal-600); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">PARTNER</span>

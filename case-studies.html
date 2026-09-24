@@ -15,9 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 </head>
@@ -25,7 +24,7 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
           <div class="site-nav__item"><a class="site-nav__link" href="index.html">Home</a></div>
           <div class="site-nav__item" data-nav-group>
@@ -70,7 +69,7 @@
       <p style="margin:0; font-size:20px; line-height:1.6; max-width:720px; color:var(--color-charcoal-200);">Our partner schools and their teacher training.</p>
     </div>
     <div style="position:relative; height:clamp(240px, 34vw, 460px); overflow:hidden;">
-      <img src="assets/web/classroom-projects.jpg" alt="Classroom displaying student projects" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
+      <img src="assets/web/classroom-projects.jpg" fetchpriority="high" alt="Classroom displaying student projects" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, var(--color-charcoal-900) 0%, rgba(10,10,10,0) 38%);"></div>
     </div>
   </section>
@@ -92,7 +91,7 @@
           <div style="flex:0 0 100%; min-width:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(12px, 2vw, 24px); padding:4px; box-sizing:border-box;">
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-signature.png" alt="Signature Grammar School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-signature.webp" alt="Signature Grammar School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Signature Grammar School</h3>
@@ -101,7 +100,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-meb.png" alt="Memon Educational Board (MEB) logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-meb.webp" alt="Memon Educational Board (MEB) logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Memon Educational Board (MEB)</h3>
@@ -110,7 +109,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-graceful.png" alt="The Graceful Grammar High School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-graceful.webp" alt="The Graceful Grammar High School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">The Graceful Grammar High School</h3>
@@ -121,7 +120,7 @@
           <div style="flex:0 0 100%; min-width:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(12px, 2vw, 24px); padding:4px; box-sizing:border-box;">
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-rashid-minhas.png" alt="Rashid Minhas Shaheed Educational Complex logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-rashid-minhas.webp" alt="Rashid Minhas Shaheed Educational Complex logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Rashid Minhas Shaheed Educational Complex</h3>
@@ -130,7 +129,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-al-zaytuna-round.png" alt="Al-Zaytuna logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-al-zaytuna-round.webp" alt="Al-Zaytuna logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Al-Zaytuna</h3>
@@ -139,7 +138,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-leaders-harbor.png" alt="Leaders' Harbor Schooling System logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-leaders-harbor.webp" alt="Leaders' Harbor Schooling System logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Leaders' Harbor Schooling System</h3>
@@ -150,7 +149,7 @@
           <div style="flex:0 0 100%; min-width:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(12px, 2vw, 24px); padding:4px; box-sizing:border-box;">
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-genex.png" alt="Genex Education System logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-genex.webp" alt="Genex Education System logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Genex Education System</h3>
@@ -159,7 +158,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-stanmore.png" alt="Stanmore Public School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-stanmore.webp" alt="Stanmore Public School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Stanmore Public School</h3>
@@ -168,7 +167,7 @@
               </div>
               <div style="border:1px solid var(--border-default); border-radius:18px; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(20,30,40,0.04);">
                 <div style="height:clamp(130px, 17vw, 200px); padding:clamp(14px, 2.4vw, 28px); box-sizing:border-box; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-default);">
-                  <img src="assets/web/school-al-badar.png" alt="Al Badar Secondary School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img decoding="async" loading="lazy" src="assets/web/school-al-badar.webp" alt="Al Badar Secondary School logo" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
                 <div style="padding:clamp(14px, 2vw, 22px); display:flex; flex-direction:column; gap:12px; flex:1;">
                   <h3 style="margin:0; font-size:clamp(14px, 1.5vw, 18px); font-weight:900; line-height:1.3; color:var(--color-charcoal-800); text-wrap:pretty;">Al Badar Secondary School</h3>
@@ -198,14 +197,14 @@
       <div data-slideshow style="display:flex; flex-direction:column; gap:14px;">
         <div style="position:relative; aspect-ratio:16/9; height:min(56vw, 58vh, 460px); width:auto; max-width:100%; margin:0 auto; border-radius:18px; overflow:hidden; background:var(--color-charcoal-900);">
             <div data-slide data-src="assets/web/training-01.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:1;">
-              <div data-slide-bg style="position:absolute; inset:-30px; background-image:url(&quot;assets/web/training-01.jpg&quot;); background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
-              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 1 of 22" style="position:absolute; inset:0; background-image:url(&quot;assets/web/training-01.jpg&quot;); background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
+              <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
+              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 1 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-02.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
-              <div data-slide-bg style="position:absolute; inset:-30px; background-image:url(&quot;assets/web/training-02.jpg&quot;); background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
-              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 2 of 22" style="position:absolute; inset:0; background-image:url(&quot;assets/web/training-02.jpg&quot;); background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
+            <div data-slide data-src="assets/web/training-02.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+              <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
+              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 2 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-03.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-03.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 3 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
@@ -213,23 +212,23 @@
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 4 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-05.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-05.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 5 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-06.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-06.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 6 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-07.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-07.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 7 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-08.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-08.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 8 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-09.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-09.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 9 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
@@ -245,7 +244,7 @@
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 12 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-13.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-13.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 13 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
@@ -253,19 +252,19 @@
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 14 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-15.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-15.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 15 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-16.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-16.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 16 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-17.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-17.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 17 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-18.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-18.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 18 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
@@ -273,17 +272,17 @@
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 19 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-20.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-20.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 20 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-21.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+            <div data-slide data-src="assets/web/training-21.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
               <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
               <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 21 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
-            <div data-slide data-src="assets/web/training-22.jpg" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
-              <div data-slide-bg style="position:absolute; inset:-30px; background-image:url(&quot;assets/web/training-22.jpg&quot;); background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
-              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 22 of 22" style="position:absolute; inset:0; background-image:url(&quot;assets/web/training-22.jpg&quot;); background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
+            <div data-slide data-src="assets/web/training-22.webp" style="position:absolute; inset:0; transition:opacity 900ms ease; opacity:0;">
+              <div data-slide-bg style="position:absolute; inset:-30px; background-image:none; background-size:cover; background-position:center; filter:blur(24px) brightness(0.5);"></div>
+              <div data-slide-bg role="img" aria-label="Genesis teacher training session, photo 22 of 22" style="position:absolute; inset:0; background-image:none; background-size:contain; background-position:center; background-repeat:no-repeat;"></div>
             </div>
           <span style="position:absolute; right:14px; bottom:14px; font-size:12px; font-weight:700; letter-spacing:0.12em; color:#ffffff; background:rgba(0,0,0,0.45); padding:6px 10px; border-radius:999px;" data-slide-counter>1 / 22</span>
         </div>

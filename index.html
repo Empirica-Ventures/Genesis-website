@@ -16,9 +16,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Genesis Education Solutions","url":"https://www.genesiseducation.solutions","logo":"https://www.genesiseducation.solutions/assets/web/icon-512.png","telephone":"+92-307-2162553","address":{"@type":"PostalAddress","streetAddress":"204A Shahrah-e-Faisal, SMCHS","addressLocality":"Karachi","addressCountry":"PK"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 <style>
@@ -31,7 +30,7 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
           <div class="site-nav__item"><a class="site-nav__link is-active" href="index.html" aria-current="page">Home</a></div>
           <div class="site-nav__item" data-nav-group>
@@ -79,7 +78,7 @@
       </div>
     </div>
     <div style="position:relative; height:clamp(260px, 38vw, 520px); overflow:hidden;">
-      <img src="assets/web/outdoor-lab.jpg" alt="Students working on projects in an outdoor learning lab" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
+      <img src="assets/web/outdoor-lab.jpg" fetchpriority="high" alt="Students working on projects in an outdoor learning lab" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%;">
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, var(--color-charcoal-900) 0%, rgba(10,10,10,0) 38%);"></div>
     </div>
   </section>
@@ -121,7 +120,7 @@
       <div style="padding:28px 24px 28px 0; display:flex; flex-direction:column; gap:12px;"><span style="font-size:44px; font-weight:900; line-height:1; color:var(--color-cyan-500);">05</span><h3 style="margin:0; font-size:19px; font-weight:900; color:var(--color-charcoal-800);">Explain their reasoning</h3><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2);">Communicate not just what they did, but why, publicly, to others.</p></div>
     </div>
     <div style="margin-top:56px; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,380px),1fr)); gap:40px; align-items:center;">
-      <img src="assets/web/classroom-wide.jpg" alt="Students building a project together in a classroom" loading="lazy" style="aspect-ratio:16/10; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center;">
+      <img decoding="async" src="assets/web/classroom-wide.jpg" alt="Students building a project together in a classroom" loading="lazy" style="aspect-ratio:16/10; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center;">
       <p style="margin:0; font-size:clamp(22px, 2.4vw, 30px); font-weight:900; line-height:1.3; letter-spacing:-0.01em; color:var(--color-charcoal-800); text-wrap:balance;">When a project is designed properly, a student cannot simply copy an answer. <span style="color:var(--color-teal-600);">They must think.</span></p>
     </div>
   </section>

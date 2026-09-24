@@ -15,9 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap">
+<link rel="preload" href="assets/fonts/lato-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
 </head>
@@ -25,7 +24,7 @@
 <div style="font-family:var(--font-sans); color:var(--fg-1); background:#ffffff; overflow-x:clip;">
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.png" alt="Genesis Education Solutions"></a>
+      <a class="site-header__logo" href="index.html"><img src="assets/web/logo-nav.webp" alt="Genesis Education Solutions" width="140" height="140"></a>
       <nav class="site-nav" aria-label="Main">
           <div class="site-nav__item"><a class="site-nav__link" href="index.html">Home</a></div>
           <div class="site-nav__item" data-nav-group>
@@ -91,7 +90,7 @@
         <span style="font-size:12px; font-weight:700; letter-spacing:0.22em; color:var(--color-coral-600);">02 · WHAT REAL PBL ACTUALLY IS</span>
         <h2 style="margin:0; font-size:clamp(30px, 3.8vw, 48px); font-weight:900; line-height:1.08; letter-spacing:-0.025em; color:var(--color-charcoal-800); text-wrap:balance;">Genuine PBL is not about what students make.</h2>
         <p style="margin:0; font-size:18px; line-height:1.65; color:var(--fg-2); text-wrap:pretty;">It is about what students cannot avoid thinking through. A strong project creates a structured situation where students must:</p>
-        <img src="assets/web/students-thinking.jpg" alt="Students thinking through a problem in class" loading="lazy" style="margin-top:12px; aspect-ratio:4/3; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center 30%;">
+        <img decoding="async" src="assets/web/students-thinking.jpg" alt="Students thinking through a problem in class" loading="lazy" style="margin-top:12px; aspect-ratio:4/3; border-radius:16px; display:block; width:100%; object-fit:cover; object-position:center 30%;">
       </div>
       <div style="display:flex; flex-direction:column;">
         <div style="display:grid; grid-template-columns:72px 1fr; gap:20px; padding:28px 0; border-bottom:1px solid var(--border-strong);"><span style="font-size:40px; font-weight:900; line-height:1; color:var(--color-teal-500);">01</span><div style="display:flex; flex-direction:column; gap:8px;"><h3 style="margin:0; font-size:22px; font-weight:900; color:var(--color-charcoal-800);">Confront a real problem</h3><p style="margin:0; font-size:16px; line-height:1.6; color:var(--fg-2);">Not a textbook question, a genuine situation that has no single correct answer.</p></div></div>

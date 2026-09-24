@@ -15,6 +15,8 @@ buttons, form fields) and `js/site.js` (nav dropdowns, mobile menu, FAQ
 accordion, partner carousel, training slideshow, contact form via
 FormSubmit). The header/nav and footer are duplicated in every page, so
 change them in all of them. New-design images are in `assets/web/`.
+Links use clean URLs (`/program`, `/case-studies`, `/` for home): `vercel.json`
+has `cleanUrls: true`, which also 308-redirects any old `*.html` link.
 `team-uploads.html` still uses the older `css/styles.css`.
 
 ## Keeping it fast

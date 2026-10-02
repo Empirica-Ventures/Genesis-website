@@ -123,3 +123,11 @@ img { max-width: 100%; }
 }
 .site-footer a { color: #ffffff; font-size: 14px; text-decoration: none; }
 .site-footer a:hover { color: var(--color-cyan-400); }
+
+/* ---------- Sticky column (Why PBL) ----------
+   Only pin the column while the two columns sit side by side
+   (2 x 420px + 80px gap + 48px padding = 968px). When they stack on
+   narrow screens, a pinned column would cover the content below it. */
+@media (min-width: 968px) {
+  .sticky-when-columns { position: sticky; top: 96px; }
+}

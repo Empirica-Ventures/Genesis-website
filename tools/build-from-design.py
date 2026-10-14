@@ -118,7 +118,11 @@ def build(design, mmap):
                  + json.dumps(mmap.get('lookup', {}), sort_keys=True) + ');')
         boot = boot.replace('</', '<\\/')
         preload = preloads_for(name, src, mmap)
-        page = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n' + head + '\n' + preload +
+        # Reserve the scrollbar's space from the first frame. Pages render behind the intro/curtain and only then
+        # become scrollable; without this the viewport narrows ~15px mid-load and Lighthouse scores the full-screen
+        # intro video as a 0.62 layout shift. Every page scrolls, so the finished page looks exactly the same.
+        gutter = '<style>html{scrollbar-gutter:stable}</style>\n'
+        page = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n' + head + '\n' + gutter + preload +
                 '<script>' + boot + '</script>\n<script src="/dc/support.js"></script>\n</head>\n<body>\n' +
                 body + '\n</body>\n</html>\n')
         dest = REPO / out

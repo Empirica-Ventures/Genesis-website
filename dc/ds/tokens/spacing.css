@@ -1,0 +1,65 @@
+/* ============================================================
+   Genesis Education Solutions — Spacing Tokens
+   Base: 4px (0.25rem)
+   ============================================================ */
+
+:root {
+  /* ── Raw Scale ──────────────────────────────────────────── */
+  --space-0:   0;
+  --space-px:  1px;
+  --space-0-5: 0.125rem;  /*  2px */
+  --space-1:   0.25rem;   /*  4px */
+  --space-1-5: 0.375rem;  /*  6px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-2-5: 0.625rem;  /* 10px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-3-5: 0.875rem;  /* 14px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-7:   1.75rem;   /* 28px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-14:  3.5rem;    /* 56px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-28:  7rem;      /* 112px */
+  --space-32:  8rem;      /* 128px */
+  --space-40:  10rem;     /* 160px */
+  --space-48:  12rem;     /* 192px */
+  --space-56:  14rem;     /* 224px */
+  --space-64:  16rem;     /* 256px */
+
+  /* ── Semantic Spacing ───────────────────────────────────── */
+
+  /* Component internals */
+  --inset-xs:  var(--space-1) var(--space-2);     /* 4px 8px   — compact chips */
+  --inset-sm:  var(--space-1-5) var(--space-3);   /* 6px 12px  — small buttons */
+  --inset-md:  var(--space-2) var(--space-4);     /* 8px 16px  — default buttons */
+  --inset-lg:  var(--space-3) var(--space-6);     /* 12px 24px — large buttons */
+  --inset-xl:  var(--space-4) var(--space-8);     /* 16px 32px — cards */
+  --inset-card: var(--space-6);                   /* 24px all sides — standard card */
+
+  /* Layout gaps */
+  --gap-xs:   var(--space-2);   /*  8px */
+  --gap-sm:   var(--space-3);   /* 12px */
+  --gap-md:   var(--space-4);   /* 16px */
+  --gap-lg:   var(--space-6);   /* 24px */
+  --gap-xl:   var(--space-8);   /* 32px */
+  --gap-2xl:  var(--space-12);  /* 48px */
+  --gap-3xl:  var(--space-16);  /* 64px */
+
+  /* Section vertical rhythm */
+  --section-padding-y: var(--space-20);  /* 80px */
+  --section-padding-x: var(--space-8);   /* 32px */
+
+  /* Max widths */
+  --max-w-sm:    640px;
+  --max-w-md:    768px;
+  --max-w-lg:    1024px;
+  --max-w-xl:    1280px;
+  --max-w-2xl:   1440px;
+  --max-w-prose: 65ch;
+}

@@ -1,0 +1,9 @@
+/* ============================================================
+   Genesis Education Solutions — Global Stylesheet
+   Entry point — import only; all rules live in sub-files.
+   ============================================================ */
+
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/effects.css';

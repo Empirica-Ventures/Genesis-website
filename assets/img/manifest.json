@@ -1,0 +1,194 @@
+{
+ "files": {
+  "assets/faq-question-3d.webp": "/assets/img/faq-question-3d.webp",
+  "assets/web/formula-manuals.png": "/assets/img/formula-manuals.webp",
+  "assets/web/gap-project.png": "/assets/img/gap-project.webp",
+  "assets/web/logo-white.png": "/assets/img/logo-white.webp",
+  "assets/web/project-manual-stack.png": "/assets/img/project-manual-stack.webp",
+  "file_000000002228820ba1883c5dc9c0f628-mv58rxhd-i3y3.png": "/assets/img/approach-hero.webp",
+  "assets/web/training-14.jpg": "/assets/img/training-14.jpg",
+  "assets/web/program-ring-01.png": "/assets/img/program-ring-01.webp",
+  "assets/web/program-ring-02.png": "/assets/img/program-ring-02.webp",
+  "assets/web/program-ring-03.png": "/assets/img/program-ring-03.webp",
+  "assets/web/program-ring-04.png": "/assets/img/program-ring-04.webp",
+  "assets/web/program-ring-05.png": "/assets/img/program-ring-05.webp",
+  "assets/web/program-ring-06.png": "/assets/img/program-ring-06.webp",
+  "assets/web/program-ring-07.png": "/assets/img/program-ring-07.webp",
+  "assets/web/program-ring-08.png": "/assets/img/program-ring-08.webp",
+  "assets/web/program-ring-09.png": "/assets/img/approach-hero.webp",
+  "assets/web/program-ring-10.png": "/assets/img/gap-project.webp",
+  "assets/web/reel-01.png": "/assets/img/program-ring-01.webp",
+  "assets/web/reel-02.png": "/assets/img/program-ring-02.webp",
+  "assets/web/reel-03.png": "/assets/img/program-ring-03.webp",
+  "assets/web/reel-04.png": "/assets/img/program-ring-04.webp",
+  "assets/web/reel-05.png": "/assets/img/program-ring-05.webp",
+  "assets/web/reel-06.png": "/assets/img/program-ring-07.webp",
+  "assets/web/reel-07.png": "/assets/img/program-ring-08.webp",
+  "assets/web/reel-08.png": "/assets/img/approach-hero.webp",
+  "assets/web/team-adil.jpg": "/assets/img/team-adil.webp",
+  "assets/web/team-hasnain.jpg": "/assets/img/team-hasnain.webp",
+  "assets/web/team-ibrahim.jpg": "/assets/img/team-ibrahim.webp",
+  "assets/web/team-jawad.jpg": "/assets/img/team-jawad.webp",
+  "assets/web/team-muzzammil.jpg": "/assets/img/team-muzzammil.webp",
+  "assets/web/team-rizwan.jpg": "/assets/img/team-rizwan.webp",
+  "assets/web/training-01.jpg": "/assets/img/training-01.jpg",
+  "assets/web/training-02.jpg": "/assets/img/training-02.webp",
+  "assets/web/training-03.jpg": "/assets/img/training-03.webp",
+  "assets/web/training-04.jpg": "/assets/img/training-04.jpg",
+  "assets/web/training-05.jpg": "/assets/img/training-05.webp",
+  "assets/web/training-06.jpg": "/assets/img/training-06.webp",
+  "assets/web/training-07.jpg": "/assets/img/training-07.jpg",
+  "assets/web/training-08.jpg": "/assets/img/training-08.webp",
+  "assets/web/training-09.jpg": "/assets/img/training-09.webp",
+  "assets/web/training-10.jpg": "/assets/img/training-10.jpg",
+  "assets/web/training-11.jpg": "/assets/img/training-11.jpg",
+  "assets/web/training-12.jpg": "/assets/img/training-12.jpg",
+  "assets/web/training-13.jpg": "/assets/img/training-13.webp",
+  "assets/web/training-15.jpg": "/assets/img/training-15.webp",
+  "assets/web/training-16.jpg": "/assets/img/training-16.webp",
+  "assets/web/training-17.jpg": "/assets/img/training-17.webp",
+  "assets/web/training-18.jpg": "/assets/img/training-18.webp",
+  "assets/web/training-19.jpg": "/assets/img/training-19.jpg",
+  "assets/web/training-20.jpg": "/assets/img/training-20.webp",
+  "assets/web/training-21.jpg": "/assets/img/training-21.webp",
+  "assets/web/training-22.jpg": "/assets/img/training-22.webp",
+  "assets/web/school-al-badar.png": "/assets/img/school-al-badar.webp",
+  "assets/web/school-meb.png": "/assets/img/school-meb.webp",
+  "assets/web/school-stanmore.png": "/assets/img/school-stanmore.webp",
+  "assets/web/school-genex.png": "/assets/img/school-genex.webp",
+  "assets/web/school-avicenna.png": "/assets/img/school-avicenna.webp",
+  "assets/web/school-signature.png": "/assets/img/school-signature.webp",
+  "assets/web/school-graceful.png": "/assets/img/school-graceful.webp",
+  "assets/web/school-rashid-minhas.png": "/assets/img/school-rashid-minhas.webp",
+  "assets/web/school-al-zaytuna-round.png": "/assets/img/school-al-zaytuna-round.webp",
+  "assets/web/favicon-32.png": "/assets/img/favicon-32.png",
+  "assets/web/apple-touch-icon.png": "/assets/img/apple-touch-icon.png",
+  "assets/web/icon-512.png": "/assets/img/icon-512.png",
+  "assets/web/og-image.jpg": "/assets/img/og-image.jpg",
+  "assets/web/genesis-intro.mp4": "/assets/img/genesis-intro.mp4"
+ },
+ "code": [
+  [
+   "'assets/web/team-' + id + '.jpg'",
+   "__gesImg('team-' + id)"
+  ],
+  [
+   "'assets/web/training-' + n + '.jpg'",
+   "__gesImg('training-' + n)"
+  ],
+  [
+   "'assets/web/' + f",
+   "__gesImg(f)"
+  ],
+  [
+   "'https://www.leadersharbor.pk/images/logo-horizontal.png'",
+   "'school-leaders-harbor'"
+  ],
+  [
+   "'school-al-badar.png'",
+   "'school-al-badar'"
+  ],
+  [
+   "'school-meb.png'",
+   "'school-meb'"
+  ],
+  [
+   "'school-stanmore.png'",
+   "'school-stanmore'"
+  ],
+  [
+   "'school-genex.png'",
+   "'school-genex'"
+  ],
+  [
+   "'school-avicenna.png'",
+   "'school-avicenna'"
+  ],
+  [
+   "'school-signature.png'",
+   "'school-signature'"
+  ],
+  [
+   "'school-graceful.png'",
+   "'school-graceful'"
+  ],
+  [
+   "'school-rashid-minhas.png'",
+   "'school-rashid-minhas'"
+  ],
+  [
+   "'school-al-zaytuna-round.png'",
+   "'school-al-zaytuna-round'"
+  ]
+ ],
+ "lookup": {
+  "training-13": "/assets/img/training-13.webp",
+  "project-manual-stack": "/assets/img/project-manual-stack.webp",
+  "program-ring-02": "/assets/img/program-ring-02.webp",
+  "team-rizwan": "/assets/img/team-rizwan.webp",
+  "training-20": "/assets/img/training-20.webp",
+  "og-image": "/assets/img/og-image.jpg",
+  "training-18": "/assets/img/training-18.webp",
+  "training-21": "/assets/img/training-21.webp",
+  "program-ring-07": "/assets/img/program-ring-07.webp",
+  "training-02": "/assets/img/training-02.webp",
+  "faq-question-3d": "/assets/img/faq-question-3d.webp",
+  "training-22": "/assets/img/training-22.webp",
+  "training-04": "/assets/img/training-04.jpg",
+  "gap-project": "/assets/img/gap-project.webp",
+  "training-16": "/assets/img/training-16.webp",
+  "team-ibrahim": "/assets/img/team-ibrahim.webp",
+  "program-ring-05": "/assets/img/program-ring-05.webp",
+  "training-09": "/assets/img/training-09.webp",
+  "school-al-badar": "/assets/img/school-al-badar.webp",
+  "genesis-intro": "/assets/img/genesis-intro.mp4",
+  "program-ring-08": "/assets/img/program-ring-08.webp",
+  "program-ring-06": "/assets/img/program-ring-06.webp",
+  "school-meb": "/assets/img/school-meb.webp",
+  "training-14": "/assets/img/training-14.jpg",
+  "training-11": "/assets/img/training-11.jpg",
+  "program-ring-04": "/assets/img/program-ring-04.webp",
+  "training-07": "/assets/img/training-07.jpg",
+  "approach-hero": "/assets/img/approach-hero.webp",
+  "team-hasnain": "/assets/img/team-hasnain.webp",
+  "training-10": "/assets/img/training-10.jpg",
+  "school-al-zaytuna-round": "/assets/img/school-al-zaytuna-round.webp",
+  "training-15": "/assets/img/training-15.webp",
+  "training-01": "/assets/img/training-01.jpg",
+  "school-avicenna": "/assets/img/school-avicenna.webp",
+  "training-06": "/assets/img/training-06.webp",
+  "team-adil": "/assets/img/team-adil.webp",
+  "school-signature": "/assets/img/school-signature.webp",
+  "school-rashid-minhas": "/assets/img/school-rashid-minhas.webp",
+  "apple-touch-icon": "/assets/img/apple-touch-icon.png",
+  "training-17": "/assets/img/training-17.webp",
+  "school-stanmore": "/assets/img/school-stanmore.webp",
+  "school-graceful": "/assets/img/school-graceful.webp",
+  "school-genex": "/assets/img/school-genex.webp",
+  "training-12": "/assets/img/training-12.jpg",
+  "icon-512": "/assets/img/icon-512.png",
+  "program-ring-03": "/assets/img/program-ring-03.webp",
+  "training-08": "/assets/img/training-08.webp",
+  "training-03": "/assets/img/training-03.webp",
+  "program-ring-01": "/assets/img/program-ring-01.webp",
+  "favicon-32": "/assets/img/favicon-32.png",
+  "training-05": "/assets/img/training-05.webp",
+  "logo-white": "/assets/img/logo-white.webp",
+  "training-19": "/assets/img/training-19.jpg",
+  "team-jawad": "/assets/img/team-jawad.webp",
+  "team-muzzammil": "/assets/img/team-muzzammil.webp",
+  "formula-manuals": "/assets/img/formula-manuals.webp",
+  "school-leaders-harbor": "/assets/img/school-leaders-harbor.webp"
+ },
+ "preload": {
+  "Home": [
+   "/assets/img/program-ring-01.webp",
+   "/assets/img/program-ring-02.webp",
+   "/assets/img/program-ring-03.webp",
+   "/assets/img/program-ring-04.webp"
+  ],
+  "Why PBL": [
+   "/assets/img/approach-hero.webp"
+  ]
+ }
+}

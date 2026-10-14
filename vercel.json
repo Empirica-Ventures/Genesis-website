@@ -7,12 +7,72 @@
       "permanent": true
     },
     {
-      "source": "/education-solutions.html",
-      "destination": "/program",
+      "source": "/why-pbl",
+      "destination": "/approach",
+      "permanent": true
+    },
+    {
+      "source": "/why-pbl.html",
+      "destination": "/approach",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies.html",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/sample-project",
+      "destination": "/projects/sample",
+      "permanent": true
+    },
+    {
+      "source": "/sample-project.html",
+      "destination": "/projects/sample",
+      "permanent": true
+    },
+    {
+      "source": "/projects/the-formula",
+      "destination": "/projects/sample",
+      "permanent": true
+    },
+    {
+      "source": "/projects/the-formula.html",
+      "destination": "/projects/sample",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/team.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/privacy",
       "permanent": true
     },
     {
       "source": "/education-solutions",
+      "destination": "/program",
+      "permanent": true
+    },
+    {
+      "source": "/education-solutions.html",
       "destination": "/program",
       "permanent": true
     }
@@ -37,7 +97,7 @@
       ]
     },
     {
-      "source": "/assets/web/(.*)",
+      "source": "/assets/img/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -46,7 +106,7 @@
       ]
     },
     {
-      "source": "/assets/booklet/(.*)",
+      "source": "/dc/(react|react-dom)\\.production\\.min\\.js",
       "headers": [
         {
           "key": "Cache-Control",

@@ -1,49 +1,78 @@
 # Genesis Education Solutions website
 
-Static marketing site (plain HTML/CSS/JS, no build step) deployed on Vercel,
-with a small set of serverless functions under `api/` for the password-gated
-team upload page (`team-uploads.html`). See `.env.example` for the env vars
-that page needs.
+Static marketing site deployed on Vercel, with a small set of serverless
+functions under `api/` for the password-gated team upload page
+(`team-uploads.html`, which still uses the older `css/styles.css`; see
+`.env.example` for its env vars).
 
-Public pages (`index.html`, `why-pbl.html`, `program.html`,
-`sample-project.html`, `case-studies.html`, `team.html`, `faq.html`,
-`contact.html`, `terms.html`) come from the Claude Design export in
-[Ultrafay/genesis-new-design](https://github.com/Ultrafay/genesis-new-design):
-section styling is inline, as exported. Shared pieces live in
-`css/tokens.css` (design-system tokens), `css/site.css` (header/nav, footer,
-buttons, form fields) and `js/site.js` (nav dropdowns, mobile menu, FAQ
-accordion, partner carousel, training slideshow, contact form via
-FormSubmit). The header/nav and footer are duplicated in every page, so
-change them in all of them. New-design images are in `assets/web/`.
-Links use clean URLs (`/program`, `/case-studies`, `/` for home): `vercel.json`
-has `cleanUrls: true`, which also 308-redirects any old `*.html` link.
-`team-uploads.html` still uses the older `css/styles.css`.
+## How the public pages are built
 
-## Keeping it fast
+The public pages are **generated** from the Claude Design handoff
+(`design_handoff_genesis_website`, `.dc.html` design components). Don't edit
+the generated files by hand. Get an updated handoff and rebuild:
 
-- **Images** in `assets/web/`: logos are lossless WebP at ~2× their on-screen
-  size; team portraits and portrait training photos are WebP (quality 90,
-  training photos capped at 920px tall — the slideshow is ≤460 css px).
-  Hero/section photos stay as their original JPEGs (already well compressed;
-  re-encoding them didn't save much without visible loss). Only switch an
-  image to WebP if it comes out clearly smaller.
-- **Caching**: `vercel.json` caches `assets/web/` and `assets/booklet/` for 30
-  days and `assets/fonts/` for a year. When you *replace* an image, give it a
-  new filename, otherwise returning visitors keep the old one for up to 30 days.
-- **Loading**: the first photo on a page has `fetchpriority="high"`; every
-  other `<img>` has `loading="lazy" decoding="async"`. The training slideshow
-  on `case-studies.html` loads no photos until it's near the viewport.
-- **Fonts**: Lato 400/700/900 is self-hosted from `assets/fonts/` (the
-  hinted builds Google serves to Windows, so text renders exactly as it did
-  with Google Fonts on every platform). Don't add Google Fonts links back.
+```bash
+python3 -I tools/build-from-design.py <path/to/design_handoff_genesis_website>
+```
+
+That rewrites the page files, `dc/` and `assets/img/`, and leaves everything
+else alone (`api/`, team uploads, `assets/images/` QR codes, `assets/files/`
+PDF). Route map (design file → URL → file), defined in `ROUTES` in the script:
+Home `/` index.html · About `/about` · Why PBL `/approach` · Program
+`/program` · Projects `/projects` · Sample Project `/projects/sample`
+(projects/sample.html) · Partners `/partners` · FAQ `/faq` · Contact
+`/contact` · Thank You `/thank-you` · Privacy `/privacy`.
+
+How it works, so it stays pixel-identical to the design:
+- Pages run the design tool's **own runtime** (`dc/support.js` + React 18.3.1,
+  self-hosted, matching the runtime's integrity hashes). So every layout,
+  animation and interaction (nav search, intro video, page curtain, scroll
+  reveals, ring carousel, roadmap, forms…) is the design's exact code.
+- Shared components (SiteNav, SiteFooter, CtaBand, DownloadForm) are bundled
+  into each page (`window.__resourceBlobs`), so nothing is fetched at load
+  time. Scripts, styles, fonts and hero images are preloaded.
+- Performance-only patches, listed in the script's `patch_*` functions:
+  - The curtain recognises clean URLs.
+  - Poppins is self-hosted instead of a Google `@import`.
+  - The teal-grid drift uses a GPU transform instead of repainting `mask-position`.
+  - A SiteNav `componentDidUpdate` guard stops a console error the design throws.
+- Verify a rebuild against the design: screenshot both at 1280px and 390px
+  and diff them. Page heights must match, and differences should be limited
+  to image re-encoding and animation timing.
+
+## Images, video and fonts (keeping it fast)
+
+`tools/optimize-design-media.py` (run by the build) writes `assets/img/`:
+- **Sizing:** each image is sized to the largest it is ever drawn, from
+  desktop at 2× retina to phone at 3×, including hover pop-outs. Sizes are in
+  `DISPLAY`; re-measure if a layout changes.
+- **Photos:** WebP quality 90, or the untouched original JPEG when that's smaller.
+- **Logos and graphics:** lossless WebP, or WebP q95 with full-quality alpha
+  when over 40 KB.
+- **Duplicates:** byte-identical photos (the design reuses photos across the
+  Home reel, Program ring and Approach hero) become one cached file.
+- **Code-built paths:** paths the page code builds at runtime go through
+  `window.__gesImg(name)`.
+- **Intro video:** H.264 re-encode at 1080p (SSIM 0.9995), 1.9 MB → 0.4 MB.
+- **Fonts:** Lato 300/400/700/900 + italics and Poppins 700 are self-hosted
+  in `assets/fonts/`. Lato uses the hinted builds Google serves to Windows,
+  so text renders as with Google Fonts everywhere. Don't add Google Fonts back.
+- **Caching:** `vercel.json` caches `assets/img/` for 30 days, `assets/fonts/`
+  for a year and React for 30 days. A replaced image needs a new filename,
+  or returning visitors keep the old one. The optimiser rebuilds `assets/img/`
+  from scratch, so rename anything whose content changes.
+
+Old URLs (`/why-pbl`, `/case-studies`, `/sample-project`, `/team`, `/terms`,
+`/education-solutions`, `/projects/the-formula`) permanently redirect to their
+new pages in `vercel.json`, and `cleanUrls` redirects any `*.html` link.
 
 ## Deploying
 
-Vercel project `genesis-site` (team "ultrafay's projects") deploys from this
-repo: pushes to `main` go to production (genesiseducation.solutions), other
-branches get preview deployments. If a merge doesn't show up in Vercel's
-Deployments list at all, the GitHub link is broken — check the project's
-Settings → Git connection and that the Vercel account has GitHub under
+Vercel project `genesis-site` (team "ultrafay's projects"). Pushes to `main`
+*should* deploy to production (genesiseducation.solutions), but its GitHub
+link has been unreliable. If a merge doesn't appear in Vercel's Deployments
+list, trigger the project's deploy hook (Settings → Git → Deploy Hooks) with a
+POST, or check the Git connection and the account's GitHub login under
 Account Settings → Authentication.
 
 ## QR codes

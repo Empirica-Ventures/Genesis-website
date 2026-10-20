@@ -23,6 +23,14 @@ Home `/` index.html · About `/about` · Why PBL `/approach` · Program
 (projects/sample.html) · Partners `/partners` · FAQ `/faq` · Contact
 `/contact` · Thank You `/thank-you` · Privacy `/privacy`.
 
+The handoff is sometimes split into several zips (Part 1 has the pages, later
+parts only images). Unzip every part into the same empty folder so the
+`design_handoff_genesis_website` folders merge, then build from the merged
+folder. Since the October 2026 handoff, Privacy is no longer in the handoff:
+its design source lives in `tools/pages/Privacy.dc.html`, and the build uses
+any page from `tools/pages/` that the handoff leaves out. Edit that file to
+change the Privacy page.
+
 How it works, so it stays pixel-identical to the design:
 - Pages run the design tool's **own runtime** (`dc/support.js` + React 18.3.1,
   self-hosted, matching the runtime's integrity hashes). So every layout,
@@ -58,9 +66,14 @@ How it works, so it stays pixel-identical to the design:
   in `assets/fonts/`. Lato uses the hinted builds Google serves to Windows,
   so text renders as with Google Fonts everywhere. Don't add Google Fonts back.
 - **Caching:** `vercel.json` caches `assets/img/` for 30 days, `assets/fonts/`
-  for a year and React for 30 days. A replaced image needs a new filename,
-  or returning visitors keep the old one. The optimiser rebuilds `assets/img/`
-  from scratch, so rename anything whose content changes.
+  for a year and React for 30 days. Every file in `assets/img/` has a hash
+  of its bytes in its name (`team-adil.89226e12.webp`), so a changed image
+  automatically gets a new URL and nobody sees a stale copy. Code that builds
+  image paths at runtime looks them up by the unhashed name via `__gesImg`.
+- **New images:** the optimiser only processes images listed in it (`DISPLAY`,
+  the team list, training photos, `SCHOOLS`). When a handoff adds an image,
+  such as a new team member's photo, add it there, then check that the built
+  pages don't request any missing `/assets/img/` file.
 
 Old URLs (`/why-pbl`, `/case-studies`, `/sample-project`, `/team`, `/terms`,
 `/education-solutions`, `/projects/the-formula`) permanently redirect to their

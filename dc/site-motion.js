@@ -55,13 +55,14 @@
   if (reduce) { window.__gesMotionReady = true; return; }
 
   var prepCss = document.createElement('style');
-  prepCss.textContent = 'html[data-motion-prep] main{opacity:0!important}main{transition:opacity 280ms cubic-bezier(0.22,1,0.36,1)}main img{backface-visibility:hidden}';
+  prepCss.textContent = '@keyframes ges-prep-failsafe{to{opacity:1}}html[data-motion-prep] main{opacity:0;animation:ges-prep-failsafe 0s linear 2.5s forwards}main{transition:opacity 280ms cubic-bezier(0.22,1,0.36,1)}main img{backface-visibility:hidden}';
   document.head.appendChild(prepCss);
   document.documentElement.setAttribute('data-motion-prep', '');
   var revealed = false;
-  function release() { if (revealed) return; scan(); requestAnimationFrame(function () { requestAnimationFrame(function () { revealed = true; document.documentElement.removeAttribute('data-motion-prep'); window.__gesMotionReady = true; }); }); }
+  function unhold() { revealed = true; document.documentElement.removeAttribute('data-motion-prep'); window.__gesMotionReady = true; }
+  function release() { if (revealed) return; try { scan(); } catch (e) { console.warn('site-motion scan failed', e); } requestAnimationFrame(function () { requestAnimationFrame(unhold); }); setTimeout(unhold, 300); }
   if (document.readyState === 'complete') setTimeout(release, 60); else addEventListener('load', function () { setTimeout(release, 60); });
-  setTimeout(release, 1500);
+  setTimeout(function () { try { release(); } catch (e) {} unhold(); }, 1500);
 
   var held = function () { var d = document.documentElement; return d.hasAttribute('data-intro') || d.hasAttribute('data-curtain'); };
   var holdQ = [];
@@ -164,7 +165,7 @@
     }
     a.pause(); el.__ga = a; pending.push(el); io.observe(el);
   }
-  function scan() { document.querySelectorAll('main ' + SEL.split(', ').join(', main ')).forEach(function (el) { if (!seen.has(el)) prep(el); }); }
+  function scan() { document.querySelectorAll('main ' + SEL.split(', ').join(', main ')).forEach(function (el) { if (seen.has(el)) return; try { prep(el); } catch (e) { seen.add(el); console.warn('site-motion prep failed', el, e); } }); }
   var se; addEventListener('scroll', function () { clearTimeout(se); se = setTimeout(function () {
     pending = pending.filter(function (el) { if (!el.__ga) return false; var r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.1) { el.__ga.play(); el.__ga = null; io.unobserve(el); return false; } return true; });
   }, 150); }, { passive: true });

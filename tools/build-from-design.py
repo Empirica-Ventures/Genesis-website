@@ -91,6 +91,9 @@ def imports_of(src):
 def build(design, mmap):
     design = Path(design)
     comp_src = {p.name[:-len('.dc.html')]: p.read_text() for p in design.glob('*.dc.html')}
+    # pages the handoff leaves out (Privacy since the October handoff) are kept in tools/pages/
+    for p in (REPO / 'tools' / 'pages').glob('*.dc.html'):
+        comp_src.setdefault(p.name[:-len('.dc.html')], p.read_text())
     out_pages = []
     for name, (route, out) in ROUTES.items():
         if not out:

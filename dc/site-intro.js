@@ -25,7 +25,7 @@
   var wrap = document.createElement('div');
   wrap.setAttribute('data-site-intro', ''); wrap.setAttribute('role', 'presentation');
   var v = document.createElement('video');
-  v.src = '/assets/img/genesis-intro.mp4'; v.muted = true; v.defaultMuted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
+  v.src = '/assets/img/genesis-intro.89fe5033.mp4'; v.muted = true; v.defaultMuted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
   v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
   var skip = document.createElement('button'); skip.type = 'button'; skip.textContent = 'Skip intro';
   wrap.appendChild(v); wrap.appendChild(skip);

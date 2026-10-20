@@ -91,6 +91,9 @@ def imports_of(src):
 def build(design, mmap):
     design = Path(design)
     comp_src = {p.name[:-len('.dc.html')]: p.read_text() for p in design.glob('*.dc.html')}
+    # pages the handoff leaves out (Privacy since the October handoff) are kept in tools/pages/
+    for p in (REPO / 'tools' / 'pages').glob('*.dc.html'):
+        comp_src.setdefault(p.name[:-len('.dc.html')], p.read_text())
     out_pages = []
     for name, (route, out) in ROUTES.items():
         if not out:
@@ -118,7 +121,11 @@ def build(design, mmap):
                  + json.dumps(mmap.get('lookup', {}), sort_keys=True) + ');')
         boot = boot.replace('</', '<\\/')
         preload = preloads_for(name, src, mmap)
-        page = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n' + head + '\n' + preload +
+        # Reserve the scrollbar's space from the first frame. Pages render behind the intro/curtain and only then
+        # become scrollable; without this the viewport narrows ~15px mid-load and Lighthouse scores the full-screen
+        # intro video as a 0.62 layout shift. Every page scrolls, so the finished page looks exactly the same.
+        gutter = '<style>html{scrollbar-gutter:stable}</style>\n'
+        page = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n' + head + '\n' + gutter + preload +
                 '<script>' + boot + '</script>\n<script src="/dc/support.js"></script>\n</head>\n<body>\n' +
                 body + '\n</body>\n</html>\n')
         dest = REPO / out

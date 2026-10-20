@@ -22,6 +22,8 @@ Quality rules (no visible loss):
   * Paths the page scripts build at runtime go through window.__gesImg(name)
     (a name -> URL lookup the build writes into each page).
   * Intro video: H.264 re-encode at the same resolution, checked by SSIM.
+  * Every output file name carries a short hash of its bytes (team-adil.3f9c2a1b.webp), so a changed
+    image always gets a new URL and the 30-day cache in vercel.json never serves a stale one.
 """
 import hashlib, io, json, re, shutil, subprocess, sys
 from pathlib import Path
@@ -45,7 +47,7 @@ for i, wh in enumerate([(407, 591), (433, 588), (399, 591), (344, 577), (344, 51
     DISPLAY[f'assets/web/program-ring-{i:02d}.png'] = (round(wh[0] * RING_POP), round(wh[1] * RING_POP), 'cover')
 for i, wh in enumerate([(450, 1002), (391, 483), (391, 483), (396, 645), (450, 1002), (391, 483), (391, 483), (396, 645)], 1):
     DISPLAY[f'assets/web/reel-{i:02d}.png'] = (wh[0], wh[1], 'cover')
-for p in ('adil', 'hasnain', 'ibrahim', 'jawad', 'muzzammil', 'rizwan'):
+for p in ('adil', 'hasnain', 'ibrahim', 'jawad', 'muzzammil', 'nabeel', 'rizwan', 'wasi', 'zain'):
     DISPLAY[f'assets/web/team-{p}.jpg'] = (789, 837, 'cover')
 # Partners mosaic + "show all" grid: the largest tile is ~760x930 device px; give every training photo that budget
 TRAINING_BOX = (800, 1000, 'cover')
@@ -53,6 +55,14 @@ SCHOOLS = ['al-badar', 'meb', 'stanmore', 'genex', 'avicenna', 'signature', 'gra
 LOGO_BOX = (900, 384, 'contain')  # partner logo tiles, never upscaled beyond the source
 
 PHOTO_Q = 90
+
+
+def hashed(path):
+    """Rename an output file to include a hash of its contents; returns the new path."""
+    h = hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+    new = path.with_name(f'{path.stem}.{h}{path.suffix}')
+    path.rename(new)
+    return new
 
 
 def target_size(src, box):
@@ -163,6 +173,7 @@ def main(design):
         sizes = [target_size(im, b) for b in e['boxes']]
         big = max(sizes, key=lambda wh: wh[0] * wh[1])
         out, nat, size, b0, b1, how = encode(src, (big[0], big[1], 'fill'), e['name'], e['lossless'])
+        out = hashed(out)
         e['url'] = '/assets/img/' + out.name
         rows.append((e['rel'], nat, size, b0, b1, how, len(e['boxes'])))
     for rel, key in owner.items():
@@ -171,12 +182,14 @@ def main(design):
     # Leaders' Harbor logo: the design hot-links it from leadersharbor.pk; host our copy (from the repo history)
     lh = REPO / 'tools' / 'school-leaders-harbor.png'
     out, nat, size, b0, b1, how = encode(lh, LOGO_BOX, 'school-leaders-harbor.webp', graphic=True)
+    out = hashed(out)
+    lh_url = '/assets/img/' + out.name
     rows.append(('leadersharbor.pk logo', nat, size, b0, b1, how, 1))
 
     # unchanged small assets the pages reference
     for rel in ('assets/web/favicon-32.png', 'assets/web/apple-touch-icon.png', 'assets/web/icon-512.png', 'assets/web/og-image.jpg'):
-        shutil.copy(design / rel, OUT / Path(rel).name)
-        files[rel] = '/assets/img/' + Path(rel).name
+        out = hashed(Path(shutil.copy(design / rel, OUT / Path(rel).name)))
+        files[rel] = '/assets/img/' + out.name
     (OUT.parent / 'downloads').mkdir(exist_ok=True)
     pdf = 'assets/downloads/Genesis-The-Formula-Sample-Project.pdf'
     shutil.copy(design / pdf, REPO / pdf)
@@ -184,7 +197,7 @@ def main(design):
     ssim = encode_video(design / 'assets/web/genesis-intro.mp4', OUT / 'genesis-intro.mp4')
     v0, v1 = (design / 'assets/web/genesis-intro.mp4').stat().st_size, (OUT / 'genesis-intro.mp4').stat().st_size
     rows.append(('assets/web/genesis-intro.mp4', '1920x1080', '1920x1080', v0, v1, f'h264 SSIM {ssim:.4f}', 1))
-    files['assets/web/genesis-intro.mp4'] = '/assets/img/genesis-intro.mp4'
+    files['assets/web/genesis-intro.mp4'] = '/assets/img/' + hashed(OUT / 'genesis-intro.mp4').name
 
     code = [
         ("'assets/web/team-' + id + '.jpg'", "__gesImg('team-' + id)"),
@@ -192,8 +205,9 @@ def main(design):
         ("'assets/web/' + f", "__gesImg(f)"),
         ("'https://www.leadersharbor.pk/images/logo-horizontal.png'", "'school-leaders-harbor'"),
     ] + [(f"'school-{s}.png'", f"'school-{s}'") for s in SCHOOLS]
-    lookup = {Path(u).stem: u for u in set(files.values()) if u.startswith('/assets/img/')}
-    lookup['school-leaders-harbor'] = '/assets/img/school-leaders-harbor.webp'
+    # runtime lookup keys are the unhashed names (team-adil, training-03, ...)
+    lookup = {Path(u).stem.rsplit('.', 1)[0]: u for u in set(files.values()) if u.startswith('/assets/img/')}
+    lookup['school-leaders-harbor'] = lh_url
     # first-screen images each page should start fetching immediately
     preload = {
         'Home': [files[f'assets/web/reel-{i:02d}.png'] for i in range(1, 5)],  # the four hero collage photos shown first

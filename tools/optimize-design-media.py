@@ -146,7 +146,7 @@ def main(design):
     owner = {}  # design path -> key of the unique source it uses
 
     def do(rel, box, name, lossless=None):
-        src = design / rel
+        src = REPO / rel if rel.startswith('tools/') else design / rel
         key = (hashlib.md5(src.read_bytes()).hexdigest(), lossless)
         owner[rel] = key
         if key in seen:  # identical photo used elsewhere: one shared file, sized for the bigger use
@@ -164,12 +164,17 @@ def main(design):
         n = src.stem.split('-')[1]
         if rel not in DISPLAY:
             do(rel, TRAINING_BOX, f'training-{n}.webp')
+    # training photos the owner supplied outside the handoff (tools/extra-media/); a handoff photo
+    # with the same number wins
+    for src in sorted((REPO / 'tools' / 'extra-media').glob('training-*.*')):
+        if not (design / 'assets/web' / f'{src.stem}.jpg').exists():
+            do(f'tools/extra-media/{src.name}', TRAINING_BOX, f'{src.stem}.webp')
     for s in SCHOOLS:
         do(f'assets/web/school-{s}.png', LOGO_BOX, f'school-{s}.webp', lossless=True)
 
     # encode each unique source once, at the largest size any of its uses needs
     for key, e in seen.items():
-        src = design / e['rel']
+        src = REPO / e['rel'] if e['rel'].startswith('tools/') else design / e['rel']
         im = Image.open(src)
         sizes = [target_size(im, b) for b in e['boxes']]
         big = max(sizes, key=lambda wh: wh[0] * wh[1])

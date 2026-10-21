@@ -74,6 +74,11 @@ How it works, so it stays pixel-identical to the design:
   the team list, training photos, `SCHOOLS`). When a handoff adds an image,
   such as a new team member's photo, add it there, then check that the built
   pages don't request any missing `/assets/img/` file.
+- **Photos from outside the handoff:** training photos the owner sends
+  separately go in `tools/extra-media/` as `training-NN.<ext>`. The optimiser
+  uses them for any number the handoff doesn't include (a handoff photo with
+  the same number wins). Partners photos 23 and 25–28 come from there; 24 and
+  29–34 are still missing and show as broken images.
 
 Old URLs (`/why-pbl`, `/case-studies`, `/sample-project`, `/team`, `/terms`,
 `/education-solutions`, `/projects/the-formula`) permanently redirect to their

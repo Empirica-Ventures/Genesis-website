@@ -159,10 +159,11 @@ def main(design):
         if stem.startswith('file_'):
             stem = 'approach-hero'
         do(rel, box, stem + '.webp')
-    for n in range(1, 23):
-        rel = f'assets/web/training-{n:02d}.jpg'
+    for src in sorted(design.glob('assets/web/training-*.jpg')):
+        rel = f'assets/web/{src.name}'
+        n = src.stem.split('-')[1]
         if rel not in DISPLAY:
-            do(rel, TRAINING_BOX, f'training-{n:02d}.webp')
+            do(rel, TRAINING_BOX, f'training-{n}.webp')
     for s in SCHOOLS:
         do(f'assets/web/school-{s}.png', LOGO_BOX, f'school-{s}.webp', lossless=True)
 
@@ -187,7 +188,10 @@ def main(design):
     rows.append(('leadersharbor.pk logo', nat, size, b0, b1, how, 1))
 
     # unchanged small assets the pages reference
-    for rel in ('assets/web/favicon-32.png', 'assets/web/apple-touch-icon.png', 'assets/web/icon-512.png', 'assets/web/og-image.jpg'):
+    # icons and share image (the design renames them, e.g. favicon-v2-32.png, when they change)
+    small = [f'assets/web/{p.name}' for pat in ('favicon*.png', 'apple-touch-icon*.png', 'icon*512*.png', 'og-image*.jpg')
+             for p in sorted(design.glob('assets/web/' + pat))]
+    for rel in small:
         out = hashed(Path(shutil.copy(design / rel, OUT / Path(rel).name)))
         files[rel] = '/assets/img/' + out.name
     (OUT.parent / 'downloads').mkdir(exist_ok=True)

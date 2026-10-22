@@ -77,8 +77,10 @@ How it works, so it stays pixel-identical to the design:
 - **Photos from outside the handoff:** training photos the owner sends
   separately go in `tools/extra-media/` as `training-NN.<ext>`. The optimiser
   uses them for any number the handoff doesn't include (a handoff photo with
-  the same number wins). Partners photos 23 and 25–28 come from there; 24 and
-  29–34 are still missing and show as broken images.
+  the same number wins). Partners photos 23–30, 32 and 33 come from there.
+  The build leaves any gallery photo with no image (currently 31 and 34) out
+  of the Partners "Show all photos" list instead of showing a broken image;
+  add the photo to `tools/extra-media/` to bring it back.
 
 Old URLs (`/why-pbl`, `/case-studies`, `/sample-project`, `/team`, `/terms`,
 `/education-solutions`, `/projects/the-formula`) permanently redirect to their

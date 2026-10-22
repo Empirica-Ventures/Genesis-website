@@ -98,7 +98,7 @@ def build(design, mmap):
     for name, (route, out) in ROUTES.items():
         if not out:
             continue
-        src = patch_page(name, rewrite(comp_src[name], mmap))
+        src = patch_page(name, rewrite(comp_src[name], mmap), mmap)
         # components this page mounts, recursively
         need, stack = [], imports_of(src)
         while stack:
@@ -157,10 +157,21 @@ FORM_OK_NEW = ("}).then((r) => { if (!r.ok) throw new Error(); return r.json(); 
                ".then((d) => { if (d && (d.success === false || d.success === 'false')) throw new Error();")
 
 
-def patch_page(name, text):
+def patch_page(name, text, mmap):
     if name == 'Contact':
         assert FORM_OK_OLD in text, 'Contact form handler changed; re-check the FormSubmit success patch'
         text = text.replace(FORM_OK_OLD, FORM_OK_NEW)
+    if name == 'Partners':
+        # "Show all photos": the design lists training photos that neither the handoff nor tools/extra-media
+        # has yet; leave those out (the owner's call) instead of showing broken images.
+        m = re.search(r"const restN = \[([^\]]*)\];", text)
+        assert m, 'Partners gallery list changed; re-check the missing-photo patch'
+        have = mmap.get('lookup', {})
+        keep = [n for n in re.findall(r"'(\d+)'", m.group(1)) if f'training-{n}' in have]
+        dropped = sorted(set(re.findall(r"'(\d+)'", m.group(1))) - set(keep))
+        if dropped:
+            print('Partners gallery: no photo for training-' + ', training-'.join(dropped) + ' (left out)')
+        text = text.replace(m.group(0), 'const restN = [' + ', '.join(f"'{n}'" for n in keep) + '];')
     return text
 
 

@@ -105,9 +105,21 @@ PNG endpoint — no account or API key needed, it's a plain GET request.
 
 `assets/images/qr-code-<purpose>.png`, e.g.:
 - `qr-code-business-card.png` — encodes `https://genesiseducation.solutions/assets/files/business-card.pdf`
-- `qr-code-feedback-form.png` — encodes the feedback Google Form URL
+- `qr-code-feedback-form.png` — encodes the old feedback Google Form URL
+  directly (already printed; leave it as is)
+- `qr-code-feedback.png` — dynamic: encodes
+  `https://www.genesiseducation.solutions/feedback`, which `vercel.json`
+  redirects to the current feedback Google Form. To switch forms, change
+  that redirect's `destination`; the printed code stays valid. The redirect
+  is `"permanent": false` on purpose: browsers cache permanent redirects,
+  so a phone that scanned it once would keep going to the old form.
 
 ### Generating a new one
+
+If qrcode-monkey.com is unreachable (it is blocked in Claude's cloud sandbox),
+generate the same plain style locally with the Python `qrcode` package:
+square modules, black on white, 4-module quiet zone, error correction H,
+about 1150px square. `qr-code-feedback.png` was made this way.
 
 ```bash
 curl -sS -o assets/images/qr-code-<purpose>.png \

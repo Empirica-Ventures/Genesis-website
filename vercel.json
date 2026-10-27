@@ -7,6 +7,11 @@
       "permanent": true
     },
     {
+      "source": "/feedback",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfaiP3TZ7Wo1zHqtjBulOe2PitTxliHa8Eybl1OKJK_1eXN9Q/viewform?usp=header",
+      "permanent": false
+    },
+    {
       "source": "/why-pbl",
       "destination": "/approach",
       "permanent": true

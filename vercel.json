@@ -2,9 +2,14 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/assets/files/business-card.pdf",
+      "source": "/assets/files/company-profile.pdf",
       "destination": "/assets/files/Structured%20PBL%20by%20Genesis%20Education%20Solutions.pdf",
-      "permanent": true
+      "permanent": false
+    },
+    {
+      "source": "/assets/files/business-card.pdf",
+      "destination": "/assets/files/company-profile.pdf",
+      "permanent": false
     },
     {
       "source": "/feedback",

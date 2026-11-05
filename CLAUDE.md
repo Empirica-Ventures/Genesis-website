@@ -105,6 +105,8 @@ PNG endpoint — no account or API key needed, it's a plain GET request.
 
 `assets/images/qr-code-<purpose>.png`, e.g.:
 - `qr-code-business-card.png` — encodes `https://genesiseducation.solutions/assets/files/business-card.pdf`
+  (printed on business cards). That old path now forwards to the main link,
+  `/assets/files/company-profile.pdf`, so both always serve the same PDF.
 - `qr-code-feedback-form.png` — encodes the old feedback Google Form URL
   directly (already printed; leave it as is)
 - `qr-code-feedback.png` — dynamic: encodes
@@ -169,8 +171,10 @@ print(repr(data))
 ### Important: point QR codes at stable URLs, not files directly
 
 `qr-code-business-card.png` encodes `/assets/files/business-card.pdf`, a
-short path that `vercel.json` permanently redirects to the actual PDF
-filename. It does **not** encode the PDF's filename directly. This means
+short path that `vercel.json` redirects to `/assets/files/company-profile.pdf`,
+which in turn redirects to the actual PDF filename. To swap the PDF, change
+only the `company-profile.pdf` redirect. Both redirects are temporary
+(`"permanent": false`) so browsers never cache the old destination. It does **not** encode the PDF's filename directly. This means
 swapping the PDF's content (see the redirect + `Content-Disposition` rules
 in `vercel.json`) never requires regenerating or reprinting the QR code —
 only the destination behind the stable path changes. Follow this same

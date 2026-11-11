@@ -31,6 +31,11 @@ its design source lives in `tools/pages/Privacy.dc.html`, and the build uses
 any page from `tools/pages/` that the handoff leaves out. Edit that file to
 change the Privacy page.
 
+Content the owner asked for that isn't in the handoff yet is added by the
+build, so it survives rebuilds: extra Projects page cards live in
+`EXTRA_PROJECTS` in `tools/build-from-design.py` (inserted before "The
+Formula", skipped if the design already has a project with that name).
+
 How it works, so it stays pixel-identical to the design:
 - Pages run the design tool's **own runtime** (`dc/support.js` + React 18.3.1,
   self-hosted, matching the runtime's integrity hashes). So every layout,

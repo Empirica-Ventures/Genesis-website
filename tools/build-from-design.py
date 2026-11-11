@@ -157,10 +157,24 @@ FORM_OK_NEW = ("}).then((r) => { if (!r.ok) throw new Error(); return r.json(); 
                ".then((d) => { if (d && (d.success === false || d.success === 'false')) throw new Error();")
 
 
+# Projects page cards added on the owner's request (same shape as the design's own entries)
+EXTRA_PROJECTS = [
+    "{ g: 4, name: 'Design a Dream Playground', tag: 'Measure it, map it, build the playground everyone wants.' }",
+    "{ g: 6, name: 'What Our Trash Tells Us', tag: 'Sort it, count it, and cut the waste at school.' }",
+    "{ g: 5, name: 'Kahani\\nGhar', ur: 'کہانی گھر', tag: 'Writing and staging our own Urdu stories.', tagUr: 'اپنی اردو کہانیاں لکھنا اور پیش کرنا' }",
+]
+
+
 def patch_page(name, text, mmap):
     if name == 'Contact':
         assert FORM_OK_OLD in text, 'Contact form handler changed; re-check the FormSubmit success patch'
         text = text.replace(FORM_OK_OLD, FORM_OK_NEW)
+    if name == 'Projects':
+        # projects the owner added after the October handoff; drop an entry here once the design has it
+        anchor = "      { g: 6, name: 'The\\nFormula',"
+        assert anchor in text, 'Projects list changed; re-check the added-projects patch'
+        extra = [p for p in EXTRA_PROJECTS if p.split("name: '")[1].split("'")[0] not in text]
+        text = text.replace(anchor, ''.join('      ' + p + ',\n' for p in extra) + anchor)
     if name == 'Partners':
         # "Show all photos": the design lists training photos that neither the handoff nor tools/extra-media
         # has yet; leave those out (the owner's call) instead of showing broken images.

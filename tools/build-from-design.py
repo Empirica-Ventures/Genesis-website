@@ -191,6 +191,13 @@ def patch_page(name, text, mmap):
 
 def patch_component(name, text):
     if name == 'DownloadForm':
+        # also send the lead to the owner's WhatsApp (api/lead.js); fire-and-forget, so the download and the
+        # FormSubmit email behave exactly as designed whether or not WhatsApp answers
+        fs = "      fetch('https://formsubmit.co/ajax/"
+        assert text.count(fs) == 1, 'DownloadForm handler changed; re-check the WhatsApp lead patch'
+        text = text.replace(fs, "      fetch('/api/lead', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },\n"
+                                "        body: JSON.stringify({ file: fileName, page: document.title, name: f.name, school: f.school, phone: f.phone, email: f.email })\n"
+                                "      }).catch(() => {});\n" + fs)
         old = "}).then((r) => {\n        if (!r.ok) throw new Error();"
         assert old in text, 'DownloadForm handler changed; re-check the FormSubmit success patch'
         text = text.replace(old, "}).then((r) => {\n        if (!r.ok) throw new Error(); return r.json(); }).then((d) => {\n        if (d && (d.success === false || d.success === 'false')) throw new Error();")

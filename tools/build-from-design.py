@@ -157,6 +157,25 @@ FORM_OK_NEW = ("}).then((r) => { if (!r.ok) throw new Error(); return r.json(); 
                ".then((d) => { if (d && (d.success === false || d.success === 'false')) throw new Error();")
 
 
+# The Formula card's slide-to-open control: a pill track, a teal fill that follows the knob, the label, and the
+# round arrow knob (behaviour in tools/snippets/slide-open.js)
+SLIDE_OPEN_HTML = (
+    '<a href="/projects/sample" data-slide-open="" draggable="false" aria-label="Slide to see inside The Formula" '
+    'style="margin-top:auto; position:relative; display:block; height:52px; border-radius:999px; '
+    'background:rgba(15,107,102,0.07); border:1px solid rgba(15,107,102,0.22); overflow:hidden; text-decoration:none; '
+    'touch-action:pan-y; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;">'
+    '<span data-slide-fill="" style="position:absolute; left:0; top:0; bottom:0; width:52px; border-radius:999px; '
+    'background:rgba(15,107,102,0.16);"></span>'
+    '<span data-slide-label="" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; '
+    'padding-left:40px; font-size:15px; font-weight:700; color:#0F6B66; pointer-events:none;">Slide to see inside</span>'
+    '<span data-slide-knob="" style="position:absolute; left:4px; top:4px; width:44px; height:44px; border-radius:999px; '
+    'background:#0F6B66; color:#FFFFFF; display:flex; align-items:center; justify-content:center; cursor:grab; '
+    'touch-action:none; box-shadow:0 6px 16px -6px rgba(15,107,102,0.6);">'
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" '
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>'
+    '</span></a>'
+)
+
 # Projects page cards added on the owner's request (same shape as the design's own entries)
 EXTRA_PROJECTS = [
     "{ g: 4, name: 'Design a Dream Playground', tag: 'Measure it, map it, build the playground everyone wants.' }",
@@ -175,6 +194,13 @@ def patch_page(name, text, mmap):
         assert anchor in text, 'Projects list changed; re-check the added-projects patch'
         extra = [p for p in EXTRA_PROJECTS if p.split("name: '")[1].split("'")[0] not in text]
         text = text.replace(anchor, ''.join('      ' + p + ',\n' for p in extra) + anchor)
+        # The Formula card: "See inside ->" becomes a slide-to-open control (tools/snippets/slide-open.js)
+        see = ('<a href="/projects/sample" style="margin-top:auto; padding-top:6px; font-size:15px; font-weight:700; '
+               'color:#0F6B66; text-decoration:none;" style-hover="text-decoration:underline;">See inside →</a>')
+        assert text.count(see) == 1, 'Projects "See inside" link changed; re-check the slide-to-open patch'
+        text = text.replace(see, SLIDE_OPEN_HTML)
+        js = (REPO / 'tools' / 'snippets' / 'slide-open.js').read_text()
+        text = text.replace('<script src="./support.js"></script>', '<script>' + js + '</script>\n<script src="./support.js"></script>', 1)
     if name == 'Partners':
         # "Show all photos": the design lists training photos that neither the handoff nor tools/extra-media
         # has yet; leave those out (the owner's call) instead of showing broken images.

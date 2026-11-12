@@ -19,6 +19,97 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.genesiseducation.solutions/"},{"@type":"ListItem","position":2,"name":"Project Library","item":"https://www.genesiseducation.solutions/projects"}]}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-v2-32.81a655a8.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-v2.5885f85a.png">
+<script>// "Slide to open" control on the Projects page (The Formula card), added by
+// tools/build-from-design.py. The control is a real <a href> so the page curtain,
+// keyboard and screen readers treat it like any link. Dragging the knob to the end,
+// tapping the track or pressing Enter slides it open, then follows the link.
+(function () {
+  if (window.__gesSlideOpen) return; window.__gesSlideOpen = true;
+  var EASE = 'cubic-bezier(0.2, 0.8, 0.2, 1)';
+  var drag = null, allow = false, swallowUntil = 0;
+
+  function parts(a) {
+    return { k: a.querySelector('[data-slide-knob]'), f: a.querySelector('[data-slide-fill]'), l: a.querySelector('[data-slide-label]') };
+  }
+  // move the knob to x px (clamped); returns how far along the track it is, 0..1
+  function place(a, x, animate) {
+    var p = parts(a), pad = p.k.offsetLeft, max = a.clientWidth - p.k.offsetWidth - pad * 2;
+    x = Math.max(0, Math.min(max, x));
+    var t = animate ? '260ms ' + EASE : '0ms';
+    p.k.style.transition = 'transform ' + t;
+    p.k.style.transform = 'translate3d(' + x + 'px,0,0)';
+    p.f.style.transition = 'width ' + t;
+    p.f.style.width = (x + p.k.offsetWidth + pad * 2) + 'px';
+    p.l.style.transition = 'opacity ' + t;
+    p.l.style.opacity = String(Math.max(0, 1 - x / (max * 0.6)));
+    return max > 0 ? x / max : 1;
+  }
+  function open(a) {
+    if (a.hasAttribute('data-slide-done')) return;
+    a.setAttribute('data-slide-done', ''); a.setAttribute('data-slide-active', '');
+    place(a, 1e6, true);
+    setTimeout(function () { allow = true; a.click(); allow = false; }, 300);
+  }
+  function reset(a) {
+    a.removeAttribute('data-slide-done');
+    place(a, 0, false);
+  }
+
+  document.addEventListener('pointerdown', function (e) {
+    var a = e.target.closest && e.target.closest('[data-slide-open]');
+    if (!a || e.button > 0 || a.hasAttribute('data-slide-done')) return;
+    a.setAttribute('data-slide-active', '');
+    if (!e.target.closest('[data-slide-knob]')) return; // a tap on the track opens it via the click below
+    e.preventDefault();
+    drag = { a: a, sx: e.clientX, id: e.pointerId, moved: false, at: 0 };
+    try { a.setPointerCapture(e.pointerId); } catch (x) {}
+    parts(a).k.style.cursor = 'grabbing';
+  }, true);
+
+  document.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.sx;
+    if (Math.abs(dx) > 4) drag.moved = true;
+    drag.at = place(drag.a, dx, false);
+  }, true);
+
+  function end(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag; drag = null;
+    parts(d.a).k.style.cursor = '';
+    swallowUntil = performance.now() + 500; // the click that follows this gesture is already handled here
+    if (!d.moved || d.at > 0.8) open(d.a); else place(d.a, 0, true);
+  }
+  document.addEventListener('pointerup', end, true);
+  document.addEventListener('pointercancel', function (e) {
+    if (drag && e.pointerId === drag.id) { place(drag.a, 0, true); parts(drag.a).k.style.cursor = ''; drag = null; }
+  }, true);
+
+  // the link only navigates once the slide has finished (allow); any other click starts the slide
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-slide-open]');
+    if (!a || allow) return;
+    e.preventDefault();
+    if (performance.now() < swallowUntil) { swallowUntil = 0; return; }
+    open(a);
+  }, true);
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.closest && e.target.closest('[data-slide-open]')) e.preventDefault();
+  }, true);
+  // coming back with the browser's Back button restores the page from cache: put the knob back
+  addEventListener('pageshow', function (e) {
+    if (e.persisted) document.querySelectorAll('[data-slide-open]').forEach(reset);
+  });
+
+  var css = document.createElement('style');
+  css.textContent =
+    '@keyframes ges-slide-hint{0%,62%,100%{transform:translate3d(0,0,0)}74%{transform:translate3d(12px,0,0)}86%{transform:translate3d(0,0,0)}}' +
+    '[data-slide-open]:not([data-slide-active]) [data-slide-knob]{animation:ges-slide-hint 2.8s ease-in-out 1.2s infinite}' +
+    '[data-slide-open]:focus-visible{outline:2px solid #3BC0D5;outline-offset:3px}' +
+    '@media (prefers-reduced-motion: reduce){[data-slide-open] [data-slide-knob]{animation:none!important}}';
+  (document.head || document.documentElement).appendChild(css);
+})();
+</script>
 <style>html{scrollbar-gutter:stable}</style>
 <link rel="preload" href="/dc/react.production.min.js" as="script">
 <link rel="preload" href="/dc/react-dom.production.min.js" as="script">
@@ -103,7 +194,7 @@
                 <sc-if value="{{ c.ur }}" hint-placeholder-val="{{ false }}"></sc-if>
                 <p style="margin:0; font-size:16px; line-height:1.55; color:var(--fg-2); text-wrap:pretty;">{{ c.tag }}</p>
                 <sc-if value="{{ c.tagUr }}" hint-placeholder-val="{{ false }}"></sc-if>
-                <sc-if value="{{ c.link }}" hint-placeholder-val="{{ false }}"><a href="/projects/sample" style="margin-top:auto; padding-top:6px; font-size:15px; font-weight:700; color:#0F6B66; text-decoration:none;" style-hover="text-decoration:underline;">See inside →</a></sc-if>
+                <sc-if value="{{ c.link }}" hint-placeholder-val="{{ false }}"><a href="/projects/sample" data-slide-open="" draggable="false" aria-label="Slide to see inside The Formula" style="margin-top:auto; position:relative; display:block; height:52px; border-radius:999px; background:rgba(15,107,102,0.07); border:1px solid rgba(15,107,102,0.22); overflow:hidden; text-decoration:none; touch-action:pan-y; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;"><span data-slide-fill="" style="position:absolute; left:0; top:0; bottom:0; width:52px; border-radius:999px; background:rgba(15,107,102,0.16);"></span><span data-slide-label="" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding-left:40px; font-size:15px; font-weight:700; color:#0F6B66; pointer-events:none;">Slide to see inside</span><span data-slide-knob="" style="position:absolute; left:4px; top:4px; width:44px; height:44px; border-radius:999px; background:#0F6B66; color:#FFFFFF; display:flex; align-items:center; justify-content:center; cursor:grab; touch-action:none; box-shadow:0 6px 16px -6px rgba(15,107,102,0.6);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></sc-if>
               </article>
             </sc-for>
           </div>

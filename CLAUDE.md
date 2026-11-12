@@ -35,6 +35,10 @@ Content the owner asked for that isn't in the handoff yet is added by the
 build, so it survives rebuilds: extra Projects page cards live in
 `EXTRA_PROJECTS` in `tools/build-from-design.py` (inserted before "The
 Formula", skipped if the design already has a project with that name).
+The Formula card's "See inside →" link is replaced by a slide-to-open control
+(`SLIDE_OPEN_HTML` in the build script, behaviour in
+`tools/snippets/slide-open.js`): drag the knob, tap the track or press Enter,
+and it opens `/projects/sample` through the normal page curtain.
 
 Download form leads also go to the owner's WhatsApp: the build patches
 DownloadForm (in `patch_component`) to POST the details to `api/lead.js`,

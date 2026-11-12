@@ -36,6 +36,12 @@ build, so it survives rebuilds: extra Projects page cards live in
 `EXTRA_PROJECTS` in `tools/build-from-design.py` (inserted before "The
 Formula", skipped if the design already has a project with that name).
 
+Download form leads also go to the owner's WhatsApp: the build patches
+DownloadForm (in `patch_component`) to POST the details to `api/lead.js`,
+fire-and-forget, next to the FormSubmit email. `api/lead.js` sends them with
+CallMeBot using the `CALLMEBOT_PHONE` and `CALLMEBOT_APIKEY` env vars (see
+`.env.example`); without them it skips the WhatsApp step.
+
 How it works, so it stays pixel-identical to the design:
 - Pages run the design tool's **own runtime** (`dc/support.js` + React 18.3.1,
   self-hosted, matching the runtime's integrity hashes). So every layout,

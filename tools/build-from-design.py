@@ -176,6 +176,14 @@ SLIDE_OPEN_HTML = (
     '</span></a>'
 )
 
+# About page team cards added on the owner's request: (id, name, title, credentials). The photo is
+# tools/extra-media/team-<id>.<ext>.
+EXTRA_TEAM = [
+    ('hassan', 'Muhammad Hassan', 'Partnership Associate',
+     "Bachelor's in Accounts and Finance. Client engagement and partnerships: international summits and congresses "
+     'with C-suite and senior leaders, brand marketing in Pakistan, and international B2B sales.'),
+]
+
 # Projects page cards added on the owner's request (same shape as the design's own entries)
 EXTRA_PROJECTS = [
     "{ g: 4, name: 'Design a Dream Playground', tag: 'Measure it, map it, build the playground everyone wants.' }",
@@ -201,6 +209,16 @@ def patch_page(name, text, mmap):
         text = text.replace(see, SLIDE_OPEN_HTML)
         js = (REPO / 'tools' / 'snippets' / 'slide-open.js').read_text()
         text = text.replace('<script src="./support.js"></script>', '<script>' + js + '</script>\n<script src="./support.js"></script>', 1)
+    if name == 'About':
+        # team members the owner added after the October handoff, shown after the design's own team cards;
+        # their photos are tools/extra-media/team-<id>.<ext>. Skipped once the design has the same id.
+        anchor = "      rizwan: p('rizwan',"
+        grp = re.search(r"grp\('', \[([^\]]*)\], light\)", text)
+        assert anchor in text and grp, 'About team list changed; re-check the added-team patch'
+        extra = [t for t in EXTRA_TEAM if f"{t[0]}: p(" not in text]
+        text = text.replace(anchor, ''.join(f"      {i}: p({i!r}, {n!r}, {r!r}, {c!r}),\n" for i, n, r, c in extra) + anchor)
+        ids = grp.group(1) + ''.join(f", {i!r}" for i, *_ in extra)
+        text = text.replace(grp.group(0), f"grp('', [{ids}], light)")
     if name == 'Partners':
         # "Show all photos": the design lists training photos that neither the handoff nor tools/extra-media
         # has yet; leave those out (the owner's call) instead of showing broken images.

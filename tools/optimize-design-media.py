@@ -47,8 +47,9 @@ for i, wh in enumerate([(407, 591), (433, 588), (399, 591), (344, 577), (344, 51
     DISPLAY[f'assets/web/program-ring-{i:02d}.png'] = (round(wh[0] * RING_POP), round(wh[1] * RING_POP), 'cover')
 for i, wh in enumerate([(450, 1002), (391, 483), (391, 483), (396, 645), (450, 1002), (391, 483), (391, 483), (396, 645)], 1):
     DISPLAY[f'assets/web/reel-{i:02d}.png'] = (wh[0], wh[1], 'cover')
+TEAM_BOX = (789, 837, 'cover')
 for p in ('adil', 'hasnain', 'ibrahim', 'jawad', 'muzzammil', 'nabeel', 'rizwan', 'wasi', 'zain'):
-    DISPLAY[f'assets/web/team-{p}.jpg'] = (789, 837, 'cover')
+    DISPLAY[f'assets/web/team-{p}.jpg'] = TEAM_BOX
 # Partners mosaic + "show all" grid: the largest tile is ~760x930 device px; give every training photo that budget
 TRAINING_BOX = (800, 1000, 'cover')
 SCHOOLS = ['al-badar', 'meb', 'stanmore', 'genex', 'avicenna', 'signature', 'graceful', 'rashid-minhas', 'al-zaytuna-round']
@@ -169,6 +170,10 @@ def main(design):
     for src in sorted((REPO / 'tools' / 'extra-media').glob('training-*.*')):
         if not (design / 'assets/web' / f'{src.stem}.jpg').exists():
             do(f'tools/extra-media/{src.name}', TRAINING_BOX, f'{src.stem}.webp')
+    # team photos for people the owner added outside the handoff (EXTRA_TEAM in build-from-design.py)
+    for src in sorted((REPO / 'tools' / 'extra-media').glob('team-*.*')):
+        if not (design / 'assets/web' / f'{src.stem}.jpg').exists():
+            do(f'tools/extra-media/{src.name}', TEAM_BOX, f'{src.stem}.webp')
     for s in SCHOOLS:
         do(f'assets/web/school-{s}.png', LOGO_BOX, f'school-{s}.webp', lossless=True)
 

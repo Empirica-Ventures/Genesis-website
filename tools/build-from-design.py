@@ -180,8 +180,8 @@ SLIDE_OPEN_HTML = (
 # tools/extra-media/team-<id>.<ext>.
 EXTRA_TEAM = [
     ('hassan', 'Muhammad Hassan', 'Partnership Associate',
-     "Bachelor's in Accounts and Finance. Client engagement and partnerships: international summits and congresses "
-     'with C-suite and senior leaders, brand marketing in Pakistan, and international B2B sales.'),
+     "9+ years in sales and marketing; Bachelor's in Accounts and Finance. Connects institutions, schools and "
+     'organizations with the Genesis Program.'),
 ]
 
 # Projects page cards added on the owner's request (same shape as the design's own entries)

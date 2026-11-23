@@ -79,7 +79,12 @@
   "assets/web/icon-v2-512.png": "/assets/img/icon-v2-512.c268d869.png",
   "assets/web/og-image.jpg": "/assets/img/og-image.f19cd5ec.jpg",
   "assets/web/genesis-intro.mp4": "/assets/img/genesis-intro.89fe5033.mp4",
-  "tools/extra-media/team-hassan.jpg": "/assets/img/team-hassan.e3281729.webp"
+  "tools/extra-media/team-hassan.jpg": "/assets/img/team-hassan.e3281729.webp",
+  "tools/extra-media/training-31.webp": "/assets/img/training-31.2b5cdace.webp",
+  "tools/extra-media/training-34.webp": "/assets/img/training-34.7a26e7b4.webp",
+  "tools/extra-media/training-35.webp": "/assets/img/training-35.87b76844.webp",
+  "tools/extra-media/training-36.webp": "/assets/img/training-36.a01d12be.webp",
+  "tools/extra-media/training-37.webp": "/assets/img/training-37.0348e488.webp"
  },
  "code": [
   [
@@ -206,7 +211,12 @@
   "approach-hero": "/assets/img/approach-hero.8c0fa901.webp",
   "program-ring-07": "/assets/img/program-ring-07.b0f5e3f1.webp",
   "school-leaders-harbor": "/assets/img/school-leaders-harbor.1d097e6d.webp",
-  "team-hassan": "/assets/img/team-hassan.e3281729.webp"
+  "team-hassan": "/assets/img/team-hassan.e3281729.webp",
+  "training-31": "/assets/img/training-31.2b5cdace.webp",
+  "training-34": "/assets/img/training-34.7a26e7b4.webp",
+  "training-35": "/assets/img/training-35.87b76844.webp",
+  "training-36": "/assets/img/training-36.a01d12be.webp",
+  "training-37": "/assets/img/training-37.0348e488.webp"
  },
  "preload": {
   "Home": [

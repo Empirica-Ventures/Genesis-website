@@ -184,6 +184,10 @@ EXTRA_TEAM = [
      'organizations with the Genesis Program.'),
 ]
 
+# Partners "Show all photos": extra training photos the owner sent (tools/extra-media/training-NN.*), shown after
+# the design's own list
+EXTRA_GALLERY = ['35', '36', '37']
+
 # Projects page cards added on the owner's request (same shape as the design's own entries)
 EXTRA_PROJECTS = [
     "{ g: 4, name: 'Design a Dream Playground', tag: 'Measure it, map it, build the playground everyone wants.' }",
@@ -229,6 +233,7 @@ def patch_page(name, text, mmap):
         dropped = sorted(set(re.findall(r"'(\d+)'", m.group(1))) - set(keep))
         if dropped:
             print('Partners gallery: no photo for training-' + ', training-'.join(dropped) + ' (left out)')
+        keep += [n for n in EXTRA_GALLERY if n not in keep and f'training-{n}' in have]
         text = text.replace(m.group(0), 'const restN = [' + ', '.join(f"'{n}'" for n in keep) + '];')
     return text
 

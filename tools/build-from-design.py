@@ -182,7 +182,14 @@ EXTRA_TEAM = [
     ('hassan', 'Muhammad Hassan', 'Partnership Associate',
      "9+ years in sales and marketing; Bachelor's in Accounts and Finance. Connects institutions, schools and "
      'organizations with the Genesis Program.'),
+    ('saqib', 'Muhammad Saqib', 'Academic Associate',
+     'Shahadat-ul-Alamiyah (Dars-e-Nizami); Principal/Nazim at Baitussalam Masjid School. Academic experience at '
+     'The Intellect Cambridge School, DHACSS Phase VII and SKBZ.'),
 ]
+
+# Which team members the About and Home pages show, in this order (the owner's choice; overrides the design's list).
+# Ids must exist in the design's team data or in EXTRA_TEAM.
+TEAM_SHOWN = ['adil', 'hasnain', 'ibrahim', 'saqib', 'jawad', 'wasi', 'muzzammil', 'rizwan', 'hassan']
 
 # Partners "Show all photos": extra training photos the owner sent (tools/extra-media/training-NN.*), shown after
 # the design's own list
@@ -214,15 +221,26 @@ def patch_page(name, text, mmap):
         js = (REPO / 'tools' / 'snippets' / 'slide-open.js').read_text()
         text = text.replace('<script src="./support.js"></script>', '<script>' + js + '</script>\n<script src="./support.js"></script>', 1)
     if name == 'About':
-        # team members the owner added after the October handoff, shown after the design's own team cards;
-        # their photos are tools/extra-media/team-<id>.<ext>. Skipped once the design has the same id.
+        # team members the owner added after the October handoff (EXTRA_TEAM; photos in
+        # tools/extra-media/team-<id>.<ext>), skipped once the design has the same id; then show TEAM_SHOWN
         anchor = "      rizwan: p('rizwan',"
         grp = re.search(r"grp\('', \[([^\]]*)\], light\)", text)
-        assert anchor in text and grp, 'About team list changed; re-check the added-team patch'
+        assert anchor in text and grp, 'About team list changed; re-check the team patch'
         extra = [t for t in EXTRA_TEAM if f"{t[0]}: p(" not in text]
         text = text.replace(anchor, ''.join(f"      {i}: p({i!r}, {n!r}, {r!r}, {c!r}),\n" for i, n, r, c in extra) + anchor)
-        ids = grp.group(1) + ''.join(f", {i!r}" for i, *_ in extra)
-        text = text.replace(grp.group(0), f"grp('', [{ids}], light)")
+        missing = [i for i in TEAM_SHOWN if f"{i}: p(" not in text]
+        assert not missing, f'TEAM_SHOWN ids with no About team data: {missing}'
+        text = text.replace(grp.group(0), "grp('', [" + ', '.join(map(repr, TEAM_SHOWN)) + "], light)")
+    if name == 'Home':
+        # same team, same order as the About page
+        anchor = '    const team = [\n'
+        grp = re.search(r"const teamGroups = \[\n      \['', \[([^\]]*)\]\]", text)
+        assert text.count(anchor) == 1 and grp, 'Home team list changed; re-check the team patch'
+        extra = [t for t in EXTRA_TEAM if f"['{t[0]}', " not in text]
+        text = text.replace(anchor, anchor + ''.join(f"      [{i!r}, {n!r}, {r!r}, {c!r}],\n" for i, n, r, c in extra))
+        missing = [i for i in TEAM_SHOWN if f"['{i}', " not in text]
+        assert not missing, f'TEAM_SHOWN ids with no Home team data: {missing}'
+        text = text.replace(grp.group(0), "const teamGroups = [\n      ['', [" + ', '.join(map(repr, TEAM_SHOWN)) + "]]")
     if name == 'Partners':
         # "Show all photos": the design lists training photos that neither the handoff nor tools/extra-media
         # has yet; leave those out (the owner's call) instead of showing broken images.

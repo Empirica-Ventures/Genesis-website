@@ -84,7 +84,8 @@
   "tools/extra-media/training-34.webp": "/assets/img/training-34.7a26e7b4.webp",
   "tools/extra-media/training-35.webp": "/assets/img/training-35.87b76844.webp",
   "tools/extra-media/training-36.webp": "/assets/img/training-36.a01d12be.webp",
-  "tools/extra-media/training-37.webp": "/assets/img/training-37.0348e488.webp"
+  "tools/extra-media/training-37.webp": "/assets/img/training-37.0348e488.webp",
+  "tools/extra-media/team-saqib.webp": "/assets/img/team-saqib.4ffdd1eb.webp"
  },
  "code": [
   [
@@ -216,7 +217,8 @@
   "training-34": "/assets/img/training-34.7a26e7b4.webp",
   "training-35": "/assets/img/training-35.87b76844.webp",
   "training-36": "/assets/img/training-36.a01d12be.webp",
-  "training-37": "/assets/img/training-37.0348e488.webp"
+  "training-37": "/assets/img/training-37.0348e488.webp",
+  "team-saqib": "/assets/img/team-saqib.4ffdd1eb.webp"
  },
  "preload": {
   "Home": [

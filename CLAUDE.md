@@ -35,12 +35,15 @@ Content the owner asked for that isn't in the handoff yet is added by the
 build, so it survives rebuilds: extra Projects page cards live in
 `EXTRA_PROJECTS` in `tools/build-from-design.py` (inserted before "The
 Formula", skipped if the design already has a project with that name).
-Extra About page team cards live in `EXTRA_TEAM` (id, name, title,
-credentials), shown after the design's team cards, with the photo in
-`tools/extra-media/team-<id>.<ext>` (the optimiser picks it up). Muhammad
-Hassan was added this way. His card and photo were applied to the built pages
-directly with the same patch and optimiser code, because the design handoff
-wasn't available at the time; the next full rebuild produces the same result.
+Team members the owner added live in `EXTRA_TEAM` (id, name, title,
+credentials), with the photo in `tools/extra-media/team-<id>.<ext>` (the
+optimiser picks it up). `TEAM_SHOWN` sets who the About and Home team sections
+show, and in what order; both pages use the same list so they always match.
+Muhammad Hassan and Muhammad Saqib were added this way, and Wasi Imran (in the
+design's data but hidden) was brought back. These were applied to the built
+pages directly with the same patches and optimiser code, because the design
+handoff wasn't available at the time; the next full rebuild produces the same
+result.
 The Formula card's "See inside →" link is replaced by a slide-to-open control
 (`SLIDE_OPEN_HTML` in the build script, behaviour in
 `tools/snippets/slide-open.js`): drag the knob, tap the track or press Enter,
